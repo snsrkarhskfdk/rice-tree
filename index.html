@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미곡상사 — 산지 직거래 쌀 대량 공급</title>
+<meta name="description" content="산지 직거래 기반의 안정적인 쌀 대량 공급. 신동진·알찬미 등 주요 품종을 빠르고 경쟁력 있게 공급합니다.">
+
+<!-- ============================================================
+  BRAND TODO (확정 후 일괄 치환)
+  - 브랜드명: 미곡상사 (가칭) → 확정 시 전체 치환
+  - 대표 전화: 000-0000-0000
+  - 대표 이메일: hello@example.com
+  - 카카오톡 채널 URL: #kakao
+  - 사업자등록번호 / 주소: 푸터 placeholder
+  - 이력 섹션 배경: 어두운 갈색 바탕 + 짧은 한국쌀 알갱이 캔버스
+============================================================ -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+<style>
+/* ==================== TOKENS (design.md 준수 — 온화한 쌀 팔레트로 개정) ==================== */
+:root{
+  --cream:        #FBF6EC;   /* 페이지 기본 배경 */
+  --cream-deep:   #F3E8D2;   /* 섹션 교차 배경 */
+  --rice-gold:    #D9A441;   /* 주 액센트: 익은 벼 */
+  --amber:        #B97F23;   /* 액센트 진한 단계(텍스트 가독) */
+  --field-green:  #2E5339;   /* 보조 액센트: 논 (B2B 신뢰) */
+  --ink:          #2B2117;   /* 본문: 따뜻한 차콜 */
+  --ink-soft:     #6E5F4B;   /* 보조 텍스트 */
+  --line:         #E5D8BE;   /* 헤어라인 */
+  --dark:         #241B12;   /* 다크 섹션 배경 */
+  --white:        #FFFFFF;
+
+  --font-body:'Pretendard Variable',Pretendard,-apple-system,sans-serif;
+  --font-display:'Black Han Sans',var(--font-body);
+
+  --container:1120px;
+  --radius:18px;
+  --shadow:0 12px 32px rgba(94,72,35,.10);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--cream);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--amber);margin-bottom:14px}
+.sec-title{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.32;margin-bottom:14px}
+.sec-desc{color:var(--ink-soft);max-width:560px}
+.center{text-align:center}.center .sec-desc{margin:0 auto}
+
+/* ==================== HEADER ==================== */
+header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(251,246,236,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(229,216,190,.6)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo b{color:var(--amber)}
+.nav-links{display:flex;gap:30px;font-size:15px;font-weight:600;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--field-green);color:#fff;font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;transition:transform .15s ease,box-shadow .15s ease}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(46,83,57,.28)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ==================== HERO ==================== */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;padding:140px 0 110px;
+  background:
+    radial-gradient(900px 560px at 82% 6%, rgba(255,212,130,.62), transparent 64%),
+    radial-gradient(700px 480px at 8% 96%, rgba(233,196,128,.40), transparent 62%),
+    linear-gradient(168deg,#FFFAEE 0%,#F8ECCF 52%,#F0DCB0 100%);
+}
+#riceCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .container{position:relative;z-index:2}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);align-items:center;gap:56px}
+.hero-inner{position:relative;z-index:2;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--amber);margin-bottom:24px}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--rice-gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-size:clamp(34px,5.2vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1.26;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero p{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);margin-bottom:36px;max-width:540px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:570px}
+.hero-bag{position:relative;width:min(100%,420px);filter:drop-shadow(0 34px 40px rgba(94,72,35,.22)) drop-shadow(0 16px 22px rgba(43,33,23,.16));animation:hero-bag-float 5.2s ease-in-out infinite alternate;will-change:transform}
+.hero-bag::before{content:"";position:absolute;inset:-9% -14%;z-index:-2;border-radius:50%;background:radial-gradient(circle at 50% 44%,rgba(217,164,65,.34),rgba(217,164,65,.18) 42%,rgba(217,164,65,0) 68%);filter:blur(10px)}
+.hero-bag::after{content:"";position:absolute;left:12%;right:10%;bottom:-4%;height:11%;z-index:-1;background:radial-gradient(ellipse at center,rgba(94,72,35,.38) 0%,rgba(94,72,35,.17) 45%,rgba(94,72,35,0) 74%);filter:blur(9px);transform:rotate(-3deg)}
+.hero-bag img{position:relative;z-index:1;width:100%;height:auto}
+@keyframes hero-bag-float{from{transform:translateY(0) rotate(.2deg)}to{transform:translateY(-12px) rotate(-.35deg)}}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;padding:15px 30px;border-radius:14px;border:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--field-green);color:#fff;box-shadow:0 10px 24px rgba(46,83,57,.26)}
+.btn-ghost{background:rgba(255,255,255,.8);color:var(--ink);border:1px solid var(--line)}
+@media(max-width:860px){
+  .hero{min-height:auto;padding:118px 0 90px}
+  .hero-layout{grid-template-columns:1fr;gap:34px}
+  .hero-visual{order:2;min-height:390px}
+  .hero-bag{width:min(72vw,320px)}
+  .hero-inner{max-width:620px}
+}
+@media(max-width:520px){
+  .hero-visual{min-height:330px}
+  .hero-bag{width:min(78vw,270px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-bag{animation:none}}
+
+/* ==================== TRUST STRIP ==================== */
+.trust{padding:0;transform:translateY(-46px);position:relative;z-index:3}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.trust-item{background:var(--white);padding:26px 22px}
+.trust-item h3{font-size:16px;font-weight:800;margin:10px 0 4px}
+.trust-item p{font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.trust-item svg{width:26px;height:26px;stroke:var(--amber)}
+@media(max-width:860px){.trust-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.trust-grid{grid-template-columns:1fr}}
+
+/* ==================== TRACE — 청년다방 스타일 스크롤 오버랩 ==================== */
+.trace{height:320vh;position:relative;padding:0}
+.trace-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#24180f}
+.trace-media{position:absolute;inset:0;
+  background:
+    radial-gradient(980px 600px at 50% 42%,rgba(111,75,39,.76),rgba(64,42,22,.54) 48%,rgba(36,24,15,.96) 100%),
+    linear-gradient(180deg,#2B1D12 0%,#3A2617 46%,#24180F 100%)}
+.trace-rice-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.trace-media::after{content:"";position:absolute;inset:0;
+  z-index:2;
+  background:
+    radial-gradient(80% 60% at 50% 50%, transparent 26%, rgba(24,15,9,.38) 100%),
+    linear-gradient(180deg,rgba(22,14,8,.20) 0%,rgba(22,14,8,.06) 46%,rgba(22,14,8,.50) 100%)}
+.trace-giant{position:absolute;top:50%;left:0;transform:translate(8vw,-50%);
+  font-family:var(--font-display);font-weight:400;white-space:nowrap;
+  font-size:clamp(72px,13vw,180px);letter-spacing:.01em;
+  color:rgba(255,247,231,var(--trace-alpha,.45));
+  text-shadow:0 3px 34px rgba(36,27,18,.62), 0 1px 4px rgba(36,27,18,.4);
+  will-change:transform,opacity;z-index:4}
+.trace-giant .trace-emphasis{color:rgba(30,24,18,var(--trace-emphasis-alpha,.72));opacity:.88;
+  text-shadow:0 3px 26px rgba(255,247,231,.22),0 1px 8px rgba(36,27,18,.38)}
+.trace-copy{position:absolute;left:50%;top:11%;transform:translateX(-50%);text-align:center;z-index:6;
+  opacity:0;transition:opacity .5s ease;width:min(680px,88vw);
+  padding:16px 22px;border-radius:16px;
+  background:rgba(255,247,231,.86);border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 12px 34px rgba(24,17,10,.22);backdrop-filter:blur(8px)}
+.trace-copy.on{opacity:1}
+.trace-copy strong{display:block;color:#201812;font-size:clamp(18px,2.4vw,26px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.trace-copy span{color:rgba(43,33,23,.74);font-size:clamp(13.5px,1.4vw,16px);line-height:1.7}
+
+/* ==================== PRODUCTS (v2 6종 그리드 유지) ==================== */
+.products{background:var(--cream)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.prod-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.prod-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.prod-tag{align-self:flex-start;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:var(--cream-deep);color:var(--amber);margin-bottom:16px}
+.prod-tag.green{background:#E7EFE7;color:var(--field-green)}
+.prod-card h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.prod-card .who{font-size:14px;color:var(--ink-soft);margin-bottom:14px}
+.prod-card ul{margin-bottom:20px;flex:1}
+.prod-card li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:6px}
+.prod-card li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--rice-gold)}
+.prod-link{font-size:14.5px;font-weight:700;color:var(--field-green)}
+@media(max-width:960px){.prod-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.prod-grid{grid-template-columns:1fr}}
+
+/* ==================== QUIZ (v2 유지) ==================== */
+.quiz{background:var(--cream-deep)}
+.quiz-box{max-width:680px;margin:48px auto 0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:38px 34px;box-shadow:var(--shadow)}
+.quiz-q{font-size:19px;font-weight:800;margin-bottom:22px}
+.quiz-step{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px}
+.quiz-opts{display:grid;gap:12px}
+.quiz-opts button{text-align:left;padding:16px 18px;border:1.5px solid var(--line);border-radius:12px;background:var(--cream);font-size:15.5px;font-weight:600;color:var(--ink);transition:border-color .15s,background .15s}
+.quiz-opts button:hover{border-color:var(--rice-gold);background:#FFF9EC}
+.quiz-result{text-align:center}
+.quiz-result .r-tag{display:inline-block;font-size:13px;font-weight:700;color:var(--field-green);background:#E7EFE7;border-radius:999px;padding:6px 16px;margin-bottom:14px}
+.quiz-result h3{font-size:26px;font-weight:800;margin-bottom:10px}
+.quiz-result p{color:var(--ink-soft);margin-bottom:26px}
+.quiz-restart{background:none;border:none;font-size:14px;font-weight:700;color:var(--ink-soft);text-decoration:underline;margin-top:18px}
+noscript .quiz-box{display:none}
+
+/* ==================== STRENGTHS ==================== */
+.strengths{background:var(--cream)}
+.str-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.str-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px}
+.str-num{font-family:var(--font-display);font-size:34px;color:var(--rice-gold);line-height:1;margin-bottom:18px}
+.str-card h3{font-size:20px;font-weight:800;margin-bottom:10px}
+.str-card p{font-size:14.5px;color:var(--ink-soft)}
+@media(max-width:860px){.str-grid{grid-template-columns:1fr}}
+
+/* ==================== PROCESS ==================== */
+.process{background:var(--cream-deep)}
+.proc-track{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:54px;position:relative}
+.proc-track::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--rice-gold) 0 10px,transparent 10px 18px)}
+.proc-step{text-align:center;position:relative}
+.proc-dot{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--rice-gold);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-weight:800;color:var(--amber);position:relative;z-index:1}
+.proc-step h4{font-size:15.5px;font-weight:800;margin-bottom:4px}
+.proc-step p{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:860px){.proc-track{grid-template-columns:repeat(3,1fr);row-gap:34px}.proc-track::before{display:none}}
+
+/* 쌀포대 트럭 — 점선 위를 달리되 텍스트(라벨)는 가리지 않음 */
+.truck{position:absolute;top:-22px;left:-110px;z-index:2;pointer-events:none;
+  filter:drop-shadow(0 6px 8px rgba(94,72,35,.22));
+  animation:truck-drive 16s linear infinite, truck-bob .55s ease-in-out infinite alternate}
+@keyframes truck-drive{0%{left:-110px}100%{left:calc(100% + 20px)}}
+@keyframes truck-bob{from{transform:translateY(0)}to{transform:translateY(-2.5px)}}
+.truck .wheel{transform-box:fill-box;transform-origin:center;animation:wheel-spin .7s linear infinite}
+@keyframes wheel-spin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.truck{display:none}}
+@media(prefers-reduced-motion:reduce){.truck{animation:none;left:8%}.truck .wheel{animation:none}}
+
+/* ==================== TARGETS ==================== */
+.targets{background:var(--cream)}
+.tgt-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+.tgt-card{border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;background:var(--white)}
+.tgt-card h3{font-size:18px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.tgt-card h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--field-green)}
+.tgt-card p{font-size:14.5px;color:var(--ink-soft)}
+@media(max-width:720px){.tgt-grid{grid-template-columns:1fr}}
+
+/* ==================== POLICY (dark) ==================== */
+.policy{background:var(--dark);color:#F4EBDB}
+.policy .sec-title{color:#FFF7E7}
+.policy .eyebrow{color:var(--rice-gold)}
+.pol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.pol-card{border:1px solid rgba(244,235,219,.16);border-radius:var(--radius);padding:30px 28px;background:rgba(255,255,255,.04)}
+.pol-card h3{font-size:17px;font-weight:800;margin-bottom:10px;color:#FFF7E7}
+.pol-card p{font-size:14px;color:rgba(244,235,219,.72)}
+@media(max-width:860px){.pol-grid{grid-template-columns:1fr}}
+
+/* ==================== SUBSCRIPTION ==================== */
+.subs{background:var(--cream)}
+.sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.sub-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;text-align:center}
+.sub-card .s-who{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px}
+.sub-card h3{font-size:21px;font-weight:800;margin-bottom:6px}
+.sub-card p{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px}
+.sub-soon{display:inline-block;font-size:12px;font-weight:700;color:var(--field-green);background:#E7EFE7;border-radius:999px;padding:5px 13px}
+@media(max-width:960px){.sub-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.sub-grid{grid-template-columns:1fr}}
+
+.contact{position:relative;overflow:hidden;background:var(--dark);color:#FFF7E7}
+.contact.reveal{opacity:1;transform:none;transition:none}
+.contact-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);
+  transition:opacity 1.2s ease,transform 1.6s ease;filter:brightness(1.25) saturate(1.06) contrast(1.04);z-index:0}
+.contact.in .contact-bg{opacity:1;transform:scale(1)}
+.contact::after{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(90deg,rgba(36,27,18,.82) 0%,rgba(36,27,18,.62) 42%,rgba(36,27,18,.34) 100%),
+             linear-gradient(180deg,rgba(36,27,18,.20) 0%,rgba(36,27,18,.56) 100%)}
+.contact .container{position:relative;z-index:1}
+.contact .eyebrow{color:#F1BD63}
+.contact .sec-title{color:#FFF7E7;text-shadow:0 3px 18px rgba(0,0,0,.34)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;margin-top:48px;align-items:start}
+.contact-info p{color:rgba(255,247,231,.82);margin-bottom:26px;text-shadow:0 2px 12px rgba(0,0,0,.28)}
+.contact-line{display:flex;gap:12px;align-items:center;margin-bottom:14px;font-weight:700}
+.contact-line span{font-size:13px;font-weight:700;color:#F1BD63;min-width:64px}
+.cform{background:rgba(255,255,255,.94);border:1px solid rgba(255,247,231,.34);border-radius:var(--radius);padding:34px 30px;box-shadow:0 18px 48px rgba(20,12,5,.26);color:var(--ink)}
+.cform label{display:block;font-size:13.5px;font-weight:700;margin:0 0 6px}
+.cform input,.cform select,.cform textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;background:var(--cream);margin-bottom:18px}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--rice-gold);border-color:transparent}
+.cform .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cform button{width:100%;margin-top:4px}
+.form-note{font-size:12.5px;color:var(--ink-soft);margin-top:14px;line-height:1.6}
+@media(max-width:860px){.contact-wrap{grid-template-columns:1fr}}
+
+/* ==================== FOOTER ==================== */
+footer{background:var(--dark);color:rgba(244,235,219,.6);padding:48px 0;font-size:13.5px}
+footer .f-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+footer .logo{color:#FFF7E7}
+footer p{line-height:1.8}
+
+/* ==================== MOBILE STICKY CTA ==================== */
+.m-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(36,27,18,.94);backdrop-filter:blur(8px)}
+.m-cta a{display:block;text-align:center;background:var(--rice-gold);color:var(--dark);font-weight:800;border-radius:12px;padding:14px}
+@media(max-width:720px){.m-cta{display:block}}
+
+/* ==================== SELECTABLE CARDS ==================== */
+.selectable{cursor:pointer;outline:none}
+.selectable:focus-visible{box-shadow:0 0 0 3px rgba(217,164,65,.5)}
+.selectable.selected{border-color:var(--rice-gold)!important;
+  box-shadow:0 0 0 3px rgba(217,164,65,.28),0 14px 34px rgba(94,72,35,.16)!important;
+  transform:translateY(-4px)}
+.selectable.selected::after{content:"✓ 선택됨";position:absolute;top:14px;right:14px;
+  background:var(--field-green);color:#fff;font-size:11px;font-weight:800;
+  padding:4px 11px;border-radius:999px;letter-spacing:.02em;
+  animation:pick-pop .22s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pick-pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.prod-card,.tgt-card,.sub-card{position:relative}
+.quiz-opts button.picked{border-color:var(--field-green);background:#E7EFE7;
+  box-shadow:0 0 0 3px rgba(46,83,57,.18)}
+
+/* ==================== GLASS ICONS ==================== */
+.gicon{width:44px;height:44px;display:block;filter:drop-shadow(0 4px 8px rgba(94,72,35,.16))}
+.gicon.s32{width:32px;height:32px;margin:0 auto 10px}
+.str-card .gicon{margin:0 0 14px}
+.trust-item .gicon{margin-bottom:2px}
+
+/* ==================== TRACE RICE BAG ==================== */
+.trace-bag{position:absolute;left:50%;bottom:-7%;width:clamp(300px,32vw,430px);z-index:3;
+  opacity:0;transform:translate(-50%,40px);transition:opacity .7s ease,transform .7s ease;
+  filter:drop-shadow(0 34px 44px rgba(0,0,0,.48)) drop-shadow(0 12px 18px rgba(43,33,23,.24));
+  pointer-events:none;will-change:transform,opacity}
+.trace-bag::after{content:"";position:absolute;left:9%;right:10%;bottom:-4%;height:12%;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 44%,rgba(0,0,0,0) 72%);
+  transform:rotate(-3deg);filter:blur(8px);opacity:.7;z-index:-1}
+.trace-bag.on{opacity:1;transform:translate(-50%,0)}
+.trace-bag img{position:relative;z-index:1;width:100%;height:auto;animation:bag-float 4.8s ease-in-out infinite alternate;transform-origin:center bottom}
+.trace-bag svg{display:none}
+@keyframes bag-float{from{transform:translateY(0) rotate(-.3deg)}to{transform:translateY(-9px) rotate(.4deg)}}
+@media(max-width:720px){.trace-bag{width:min(72vw,340px);bottom:6%;left:50%}.trace-bag::after{bottom:-6%;height:10%}}
+@media(prefers-reduced-motion:reduce){.trace-bag{opacity:1;transform:translate(-50%,0)}.trace-bag img{animation:none}}
+
+/* ==================== MOTION ==================== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  #riceCanvas{display:none}
+  .trace{height:auto}
+  .trace-sticky{position:relative;height:78vh}
+  .trace-giant{font-size:clamp(40px,8vw,96px);white-space:normal;left:6vw;right:6vw;transform:translateY(-50%);opacity:.34}
+  .trace-copy{opacity:1}
+  .contact-bg{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- 글라스모피즘 아이콘 스프라이트 (쌀 테마 · 44/32px 규격) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="giBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.6"/></filter>
+    <!-- 유리 패널: 좌하단이 가장 밝게 차오르는 프로스트 -->
+    <linearGradient id="glassGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,.74)"/>
+      <stop offset=".55" stop-color="rgba(255,255,255,.42)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,.20)"/>
+    </linearGradient>
+    <linearGradient id="glassEdge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,1)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,.45)"/>
+    </linearGradient>
+    <!-- 쌀알: 흰빛에서 노란빛으로 떨어지는 그라데이션 -->
+    <linearGradient id="grainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#FBF1D6"/>
+      <stop offset="1" stop-color="#ECC468"/>
+    </linearGradient>
+
+    <!-- 벼 이삭 (산지·공급망) -->
+    <g id="bk-sheaf">
+      <circle cx="33" cy="13" r="9.5" fill="#E8AE3C"/>
+      <path d="M16 42 C18 31 23 23 32 16" stroke="#3F7A4E" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="22" cy="26" rx="3.2" ry="5" fill="#E2BC62" transform="rotate(-28 22 26)"/>
+      <ellipse cx="28" cy="20" rx="3.2" ry="5" fill="#EFD292" transform="rotate(-40 28 20)"/>
+      <ellipse cx="17" cy="33" rx="3.2" ry="5" fill="#E2BC62" transform="rotate(-16 17 33)"/>
+    </g>
+    <clipPath id="cp-a"><rect x="5" y="15" width="29" height="27" rx="9"/></clipPath>
+    <symbol id="gi-sheaf" viewBox="0 0 48 48">
+      <use href="#bk-sheaf"/>
+      <rect x="5" y="15" width="29" height="27" rx="9" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-a)" opacity=".9"><use href="#bk-sheaf" filter="url(#giBlur)"/></g>
+      <rect x="5" y="15" width="29" height="27" rx="9" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <ellipse cx="19.5" cy="28.5" rx="4.4" ry="7.4" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(18 19.5 28.5)"/>
+      <path d="M40 33l1.1 2.7 2.7 1.1-2.7 1.1-1.1 2.7-1.1-2.7-2.7-1.1 2.7-1.1z" fill="#fff"/>
+    </symbol>
+
+    <!-- 시계 (익일 출고) -->
+    <g id="bk-clock">
+      <circle cx="30" cy="18" r="13" fill="#E8AE3C"/>
+      <path d="M30 11v7l5 3" stroke="#FFF6E0" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </g>
+    <clipPath id="cp-b"><rect x="5" y="17" width="28" height="26" rx="9"/></clipPath>
+    <symbol id="gi-clock" viewBox="0 0 48 48">
+      <use href="#bk-clock"/>
+      <rect x="5" y="17" width="28" height="26" rx="9" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-b)" opacity=".9"><use href="#bk-clock" filter="url(#giBlur)"/></g>
+      <rect x="5" y="17" width="28" height="26" rx="9" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <path d="M13 34h12M19 28v12" stroke="rgba(255,255,255,0)" stroke-width="0"/>
+      <ellipse cx="19" cy="30" rx="4" ry="6.8" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(14 19 30)"/>
+      <path d="M9 9l1.1 2.7L12.8 12.8 10.1 13.9 9 16.6 7.9 13.9 5.2 12.8 7.9 11.7z" fill="#fff" opacity=".9"/>
+    </symbol>
+
+    <!-- 이력 장부 (도정일자 기록) -->
+    <g id="bk-ledger">
+      <rect x="18" y="6" width="22" height="28" rx="4" fill="#3F7A4E"/>
+      <path d="M23 14h12M23 20h12M23 26h7" stroke="#DFF0E2" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+    <clipPath id="cp-c"><rect x="6" y="18" width="27" height="25" rx="8"/></clipPath>
+    <symbol id="gi-ledger" viewBox="0 0 48 48">
+      <use href="#bk-ledger"/>
+      <rect x="6" y="18" width="27" height="25" rx="8" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-c)" opacity=".9"><use href="#bk-ledger" filter="url(#giBlur)"/></g>
+      <rect x="6" y="18" width="27" height="25" rx="8" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <ellipse cx="17" cy="30.5" rx="4" ry="6.8" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(20 17 30.5)"/>
+      <path d="M41 36l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#fff"/>
+    </symbol>
+
+    <!-- 결제 (결제 확인 후 출고) -->
+    <g id="bk-pay">
+      <rect x="14" y="8" width="26" height="18" rx="4" fill="#B97F23"/>
+      <rect x="14" y="13" width="26" height="4" fill="#8A5A2B"/>
+      <circle cx="34" cy="22" r="2.4" fill="#FFE9A8"/>
+    </g>
+    <clipPath id="cp-d"><rect x="6" y="19" width="28" height="24" rx="8"/></clipPath>
+    <symbol id="gi-pay" viewBox="0 0 48 48">
+      <use href="#bk-pay"/>
+      <rect x="6" y="19" width="28" height="24" rx="8" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-d)" opacity=".9"><use href="#bk-pay" filter="url(#giBlur)"/></g>
+      <rect x="6" y="19" width="28" height="24" rx="8" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <path d="M14 31.5l4 4 7-8" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M41 10l1.1 2.7 2.7 1.1-2.7 1.1-1.1 2.7-1.1-2.7-2.7-1.1 2.7-1.1z" fill="#fff"/>
+    </symbol>
+
+    <!-- 밥공기 (가정·정기배송) -->
+    <g id="bk-bowl">
+      <path d="M16 18h24c0 8-5.4 14-12 14s-12-6-12-14z" fill="#3F7A4E"/>
+      <ellipse cx="28" cy="17" rx="11" ry="4.6" fill="#F4ECD8"/>
+      <ellipse cx="24" cy="14.5" rx="3" ry="2" fill="#fff"/>
+      <ellipse cx="31" cy="14" rx="3" ry="2" fill="#fff"/>
+      <ellipse cx="27.5" cy="12" rx="3" ry="2" fill="#fff"/>
+    </g>
+    <clipPath id="cp-e"><rect x="5" y="20" width="27" height="23" rx="8"/></clipPath>
+    <symbol id="gi-bowl" viewBox="0 0 48 48">
+      <use href="#bk-bowl"/>
+      <rect x="5" y="20" width="27" height="23" rx="8" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-e)" opacity=".9"><use href="#bk-bowl" filter="url(#giBlur)"/></g>
+      <rect x="5" y="20" width="27" height="23" rx="8" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <ellipse cx="16.5" cy="31" rx="4" ry="6.6" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(16 16.5 31)"/>
+      <path d="M40 34l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#fff"/>
+    </symbol>
+
+    <!-- 미니 트럭 (대량 납품) -->
+    <g id="bk-truck">
+      <rect x="12" y="10" width="18" height="13" rx="2.5" fill="#8A5A2B"/>
+      <path d="M30 14h7c1.6 0 3 .8 3.8 2.2l2.4 4c.5.9.8 1.9.8 2.9V25H30V14z" fill="#3F7A4E"/>
+      <circle cx="20" cy="26" r="4" fill="#241B12"/><circle cx="37" cy="26" r="4" fill="#241B12"/>
+      <ellipse cx="17" cy="8" rx="2.6" ry="4" fill="#EFD292" transform="rotate(12 17 8)"/>
+      <ellipse cx="23" cy="7" rx="2.6" ry="4" fill="#F4E3B8" transform="rotate(-8 23 7)"/>
+    </g>
+    <clipPath id="cp-f"><rect x="5" y="18" width="28" height="25" rx="8"/></clipPath>
+    <symbol id="gi-truck" viewBox="0 0 48 48">
+      <use href="#bk-truck"/>
+      <rect x="5" y="18" width="28" height="25" rx="8" fill="url(#glassGrad)"/>
+      <g clip-path="url(#cp-f)" opacity=".9"><use href="#bk-truck" filter="url(#giBlur)"/></g>
+      <rect x="5" y="18" width="28" height="25" rx="8" fill="none" stroke="url(#glassEdge)" stroke-width="1.5"/>
+      <ellipse cx="17" cy="30.5" rx="4" ry="6.6" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(18 17 30.5)"/>
+      <path d="M41 33l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">미<b>곡</b>상사</a>
+    <nav class="nav-links">
+      <a href="#products">상품</a>
+      <a href="#quiz">쌀 추천</a>
+      <a href="#process">거래 절차</a>
+      <a href="#policy">거래 원칙</a>
+      <a href="#subs">정기배송</a>
+    </nav>
+    <a class="nav-cta" href="#contact">B2B 견적 문의</a>
+  </div>
+</header>
+
+<!-- ① HERO -->
+<section class="hero" id="top">
+  <canvas id="riceCanvas" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-inner">
+        <span class="hero-badge"><span class="dot"></span>전날 주문 · 익일 차량 출고</span>
+        <h1>산지에서 바로,<br><em>안정적인 쌀 대량 공급</em></h1>
+        <p>신동진·알찬미 등 주요 품종을 산지 직거래로 빠르고 경쟁력 있게 공급합니다. 중도매·마트·식당·도시락 공장 납품 상담을 받습니다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">대량 납품 견적 받기</a>
+          <a class="btn btn-ghost" href="#quiz">우리집 쌀 추천받기</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-bag">
+          <img src="assets/rice-tree-shindongjin-10kg.png" alt="" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② TRUST STRIP -->
+<section class="trust" aria-label="신뢰 요소">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg class="gicon"><use href="#gi-sheaf"/></svg>
+        <h3>산지 직거래</h3><p>산지·정미소·농협 네트워크 기반으로 주요 품종을 안정적으로 확보합니다.</p>
+      </div>
+      <div class="trust-item">
+        <svg class="gicon"><use href="#gi-clock"/></svg>
+        <h3>전날 주문, 익일 출고</h3><p>오늘 주문이 확정되면 내일 아침 차량이 출고되는 빠른 공급 체계를 지향합니다.</p>
+      </div>
+      <div class="trust-item">
+        <svg class="gicon"><use href="#gi-ledger"/></svg>
+        <h3>도정일자 표기</h3><p>도정일자·품종·공급처 이력을 기록해 품질 일관성을 관리합니다.</p>
+      </div>
+      <div class="trust-item">
+        <svg class="gicon"><use href="#gi-pay"/></svg>
+        <h3>결제 확인 후 출고</h3><p>거래 조건을 명확히 안내하고, 결제 확인 후 출고를 원칙으로 안정적인 납품을 약속합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ PRODUCTS 6종 -->
+<section class="products" id="products">
+  <div class="container">
+    <span class="eyebrow">PRODUCTS</span>
+    <h2 class="sec-title">용도에 맞는 쌀을 고르세요</h2>
+    <p class="sec-desc">식당·마트 선호 품종 신동진과 가성비 알찬미를 중심으로, 20kg 대량부터 선물세트까지 용도별로 제안합니다.</p>
+    <div class="prod-grid">
+      <article class="prod-card reveal" id="p-sdj20">
+        <span class="prod-tag green">B2B 주력</span>
+        <h3>신동진 20kg</h3>
+        <p class="who">식당 · 도시락 공장 · 중도매</p>
+        <ul><li>차량 단위 대량 회전에 최적</li><li>도정일자·공급처 이력 관리</li><li>품종 일관성으로 밥맛 유지</li></ul>
+        <a class="prod-link" href="#contact">대량 견적 문의 →</a>
+      </article>
+      <article class="prod-card reveal" id="p-sdj10">
+        <span class="prod-tag">마트 · 가정</span>
+        <h3>신동진 10kg</h3>
+        <p class="who">마트 · 3~4인 가구</p>
+        <ul><li>소비자 접근성이 높은 중간 단위</li><li>마트 납품 후 소분 협의 가능</li><li>신선한 도정일자 기준 출고</li></ul>
+        <a class="prod-link" href="#contact">납품 상담 →</a>
+      </article>
+      <article class="prod-card reveal" id="p-sdj5">
+        <span class="prod-tag">정기배송 추천</span>
+        <h3>신동진 5kg</h3>
+        <p class="who">1~2인 가구 · 정기배송</p>
+        <ul><li>다 먹을 때쯤 새 쌀이 도착</li><li>보관 부담 없는 소포장</li><li>온라인 판매 준비 중</li></ul>
+        <a class="prod-link" href="#subs">정기배송 알아보기 →</a>
+      </article>
+      <article class="prod-card reveal" id="p-acm10">
+        <span class="prod-tag">가성비</span>
+        <h3>알찬미 5kg · 10kg</h3>
+        <p class="who">가성비 중시 가정 · 마트</p>
+        <ul><li>합리적인 가격대의 인기 품종</li><li>가격대 다양화 라인</li><li>용도별 추천 가능</li></ul>
+        <a class="prod-link" href="#contact">상담 문의 →</a>
+      </article>
+      <article class="prod-card reveal" id="p-premium">
+        <span class="prod-tag">선물용</span>
+        <h3>프리미엄 1kg · 3kg</h3>
+        <p class="who">선물세트 · 답례품</p>
+        <ul><li>고급 포장 체험팩 구성</li><li>명절·기업 답례 맞춤 상담</li><li>준비 중 — 상담 연결 예정</li></ul>
+        <a class="prod-link" href="#contact">선물세트 상담 →</a>
+      </article>
+      <article class="prod-card reveal" id="p-b2b">
+        <span class="prod-tag green">대량 · 정기</span>
+        <h3>B2B 정기 납품</h3>
+        <p class="who">식자재 업체 · 급식 · 체인</p>
+        <ul><li>주간 반복 납품과 지역 묶음 배송</li><li>품종·수량·하차 조건 맞춤 견적</li><li>거래명세서·세금계산서 발행</li></ul>
+        <a class="prod-link" href="#contact">정기 납품 견적 →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ QUIZ -->
+<section class="quiz" id="quiz">
+  <div class="container center">
+    <span class="eyebrow">RICE FINDER</span>
+    <h2 class="sec-title">30초, 우리집에 맞는 쌀 찾기</h2>
+    <p class="sec-desc">세 가지 질문이면 충분합니다. 인원과 용도에 맞는 품종·중량을 추천해 드립니다.</p>
+    <div class="quiz-box" id="quizBox" aria-live="polite"></div>
+    <noscript><p style="margin-top:24px;color:var(--ink-soft)">추천 기능은 브라우저 스크립트가 필요합니다. 위 상품 카드에서 직접 선택하시거나 문의를 남겨주세요.</p></noscript>
+  </div>
+</section>
+
+<!-- ⑥ STRENGTHS -->
+<section class="strengths">
+  <div class="container">
+    <span class="eyebrow">WHY US</span>
+    <h2 class="sec-title">쌀 유통에서 가장 어려운 일을<br>이미 하고 있습니다</h2>
+    <div class="str-grid">
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-sheaf"/></svg><div class="str-num">공급망</div><h3>산지·정미소·농협 연결</h3><p>좋은 물량을 안정적으로 확보하는 것이 쌀 유통의 가장 큰 진입장벽입니다. 당진·전남·군산·순천 등 주요 산지 네트워크로 주요 품종을 확보합니다.</p></div>
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-clock"/></svg><div class="str-num">속도</div><h3>전날 주문 → 익일 출고</h3><p>주문 기반 출고 구조로 신선한 도정일자의 쌀이 빠르게 도착합니다. 재고로 묵힌 쌀이 아니라, 주문에 맞춰 움직이는 쌀입니다.</p></div>
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-pay"/></svg><div class="str-num">단가</div><h3>같은 품질, 더 나은 조건</h3><p>산지 직거래 구조로 동일 품종 기준 경쟁력 있는 단가를 제시합니다. 비교 견적을 환영합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ PROCESS -->
+<section class="process" id="process">
+  <div class="container center">
+    <span class="eyebrow">PROCESS</span>
+    <h2 class="sec-title">문의부터 세금계산서까지, 여섯 단계</h2>
+    <p class="sec-desc">모든 거래는 같은 절차로 진행됩니다. 단계마다 확인하고 기록합니다.</p>
+    <div class="proc-track">
+      <div class="truck" aria-hidden="true">
+        <svg viewBox="0 0 120 56" width="96" height="45" fill="none">
+          <!-- 적재함 + 쌀포대 -->
+          <rect x="4" y="18" width="62" height="22" rx="3" fill="#8A5A2B"/>
+          <g>
+            <rect x="9"  y="6"  width="15" height="14" rx="6" fill="#F2E3BE" stroke="#C9A24B"/>
+            <rect x="27" y="6"  width="15" height="14" rx="6" fill="#EFDCAB" stroke="#C9A24B"/>
+            <rect x="45" y="6"  width="15" height="14" rx="6" fill="#F2E3BE" stroke="#C9A24B"/>
+            <rect x="18" y="-6" width="15" height="14" rx="6" fill="#EFDCAB" stroke="#C9A24B"/>
+            <rect x="36" y="-6" width="15" height="14" rx="6" fill="#F2E3BE" stroke="#C9A24B"/>
+            <text x="16.5" y="16" font-size="7" fill="#B97F23" font-weight="700">米</text>
+            <text x="34.5" y="16" font-size="7" fill="#B97F23" font-weight="700">米</text>
+            <text x="52.5" y="16" font-size="7" fill="#B97F23" font-weight="700">米</text>
+          </g>
+          <!-- 캡(운전석) -->
+          <path d="M66 22h22c3 0 6 1.6 7.6 4.2l6 9.2c.9 1.4 1.4 3 1.4 4.6v0H66V22z" fill="#2E5339"/>
+          <path d="M70 26h13c1.6 0 3.2.9 4 2.3l3.6 5.7H70V26z" fill="#CFE3D2"/>
+          <rect x="0" y="40" width="104" height="4" rx="2" fill="#3A2B1A"/>
+          <!-- 바퀴 -->
+          <g class="wheel"><circle cx="22" cy="46" r="8" fill="#241B12"/><circle cx="22" cy="46" r="3.4" fill="#CBB78C"/><rect x="21.2" y="39.5" width="1.6" height="13" rx="0.8" fill="#241B12" opacity="0"/><rect x="20.9" y="43.4" width="2.2" height="5.2" rx="1.1" fill="#FBF6EC" opacity=".9" transform="rotate(0 22 46)"/></g>
+          <g class="wheel"><circle cx="86" cy="46" r="8" fill="#241B12"/><circle cx="86" cy="46" r="3.4" fill="#CBB78C"/><rect x="84.9" y="43.4" width="2.2" height="5.2" rx="1.1" fill="#FBF6EC" opacity=".9"/></g>
+          <!-- 헤드라이트 -->
+          <circle cx="101" cy="36" r="2.4" fill="#FFE9A8"/>
+        </svg>
+      </div>
+      <div class="proc-step"><div class="proc-dot">1</div><h4>문의</h4><p>품종·수량·지역·희망 납품일</p></div>
+      <div class="proc-step"><div class="proc-dot">2</div><h4>견적</h4><p>당일 단가·운송비·부가세 명시</p></div>
+      <div class="proc-step"><div class="proc-dot">3</div><h4>입금</h4><p>결제 확인 후 출고 확정</p></div>
+      <div class="proc-step"><div class="proc-dot">4</div><h4>출고</h4><p>산지 상차, 차량·기사 정보 공유</p></div>
+      <div class="proc-step"><div class="proc-dot">5</div><h4>하차</h4><p>수량·포장 상태 확인, 인수증</p></div>
+      <div class="proc-step"><div class="proc-dot">6</div><h4>증빙</h4><p>세금계산서·거래명세서 발행</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ TARGETS -->
+<section class="targets">
+  <div class="container">
+    <span class="eyebrow">FOR BUSINESS</span>
+    <h2 class="sec-title">이런 곳에 납품합니다</h2>
+    <div class="tgt-grid">
+      <div class="tgt-card reveal"><h3>중도매 · 도매상</h3><p>동일 품종 기준 경쟁력 있는 단가와 빠른 차량 출고. 20kg 기준 테스트 물량부터 시작해 반복 공급 조건을 협의합니다.</p></div>
+      <div class="tgt-card reveal"><h3>마트</h3><p>신동진 등 소비자 선호 품종을 20kg·10kg 중심으로 안정 납품합니다. 이후 5kg 소분 협의가 가능합니다.</p></div>
+      <div class="tgt-card reveal"><h3>식당 · 식자재 업체</h3><p>밥맛과 품종 일관성이 기준입니다. 샘플과 도정일자 기준, 교환 정책을 명확히 안내합니다.</p></div>
+      <div class="tgt-card reveal"><h3>도시락 공장 · 급식</h3><p>주간 반복 납품과 지역 묶음 배송으로 안정 공급합니다. 납품 시간과 정산 조건을 거래 전 확정합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ POLICY (dark) -->
+<section class="policy" id="policy">
+  <div class="container">
+    <span class="eyebrow">OUR RULES</span>
+    <h2 class="sec-title">오래 거래하기 위한 원칙</h2>
+    <div class="pol-grid">
+      <div class="pol-card reveal"><h3>투명한 결제</h3><p>신규 거래는 결제 확인 후 출고를 원칙으로 합니다. 거래 조건은 견적 단계에서 명확히 안내드리며, 모든 거래에 세금계산서를 발행합니다.</p></div>
+      <div class="pol-card reveal"><h3>기록하는 품질</h3><p>품종·도정일자·공급처 이력을 포대 단위로 기록합니다. 품질 이슈는 기록 기준으로 교환·대응합니다.</p></div>
+      <div class="pol-card reveal"><h3>약속한 시간</h3><p>차량 배차와 상차·하차 시간을 사전에 공유합니다. 납품 시간 준수가 거래의 기본이라고 믿습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SIGNATURE: 이력 스크롤 오버랩 -->
+<section class="trace" id="trace" aria-label="한 포대마다 이력이 따라옵니다">
+  <div class="trace-sticky">
+    <div class="trace-media">
+      <canvas class="trace-rice-canvas" id="traceRiceCanvas" aria-hidden="true"></canvas>
+    </div>
+    <h2 class="trace-giant" id="traceGiant">한 포대마다 <span class="trace-emphasis">이력이</span> 따라옵니다</h2>
+    <div class="trace-bag" id="traceBag" aria-hidden="true">
+      <img src="assets/rice-tree-shindongjin-10kg.png" alt="" loading="lazy">
+      <svg viewBox="0 0 360 392" font-family="'Pretendard Variable',Pretendard,sans-serif">
+        <defs>
+          <linearGradient id="bagBody" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FEFAF0"/><stop offset=".55" stop-color="#F6ECD4"/><stop offset="1" stop-color="#E6D4AC"/>
+          </linearGradient>
+          <linearGradient id="bagSide" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#B49F74"/><stop offset="1" stop-color="#D4C299"/>
+          </linearGradient>
+          <linearGradient id="bagTop" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFDF6"/><stop offset="1" stop-color="#EBDDBC"/>
+          </linearGradient>
+          <linearGradient id="crimp" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F3E8CC"/><stop offset=".5" stop-color="#E2D2AC"/><stop offset="1" stop-color="#F0E4C6"/>
+          </linearGradient>
+          <radialGradient id="bagSheen" cx=".28" cy=".18" r=".9">
+            <stop offset="0" stop-color="rgba(255,255,255,.5)"/><stop offset=".5" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+          <radialGradient id="ground" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="rgba(10,6,2,.42)"/><stop offset="1" stop-color="rgba(10,6,2,0)"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 바닥 그림자 -->
+        <ellipse cx="178" cy="366" rx="158" ry="19" fill="url(#ground)"/>
+
+        <!-- 윗면 슬리버 -->
+        <polygon points="30,74 86,58 302,80 252,98" fill="url(#bagTop)"/>
+
+        <!-- 좌측 거셋(측면) : 뒤로 물러나는 면 -->
+        <g transform="translate(30,74) skewY(-16)">
+          <rect x="0" y="0" width="56" height="276" fill="url(#bagSide)"/>
+          <rect x="0" y="0" width="56" height="11" fill="#A8946B"/>
+          <rect x="0" y="265" width="56" height="11" fill="#A8946B"/>
+          <line x1="28" y1="14" x2="28" y2="262" stroke="#8F7B55" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <rect x="50" y="0" width="6" height="276" fill="rgba(255,255,255,.22)"/>
+        </g>
+
+        <!-- 정면 (쿼터뷰: 우측으로 살짝 기울어 물러남) -->
+        <g transform="translate(86,58) skewY(6)">
+          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagBody)"/>
+          <!-- 압착부 -->
+          <rect x="-3" y="0" width="222" height="13" rx="4" fill="url(#crimp)"/>
+          <path d="M2 4h212M2 9h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
+          <rect x="-3" y="263" width="222" height="13" rx="4" fill="url(#crimp)"/>
+          <path d="M2 267h212M2 272h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
+          <!-- 볼록한 입체: 우측 안쪽 그림자 + 광택 -->
+          <rect x="178" y="2" width="38" height="272" fill="rgba(122,93,49,.12)"/>
+          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagSheen)"/>
+          <path d="M30 6 L84 6 L34 270 L8 270 Z" fill="rgba(255,255,255,.13)"/>
+
+          <!-- 특등급 배지 -->
+          <circle cx="40" cy="44" r="17" fill="#1E1A14"/>
+          <circle cx="40" cy="44" r="17" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
+          <text x="40" y="50" text-anchor="middle" font-size="15" font-weight="800" fill="#E8C05A">특</text>
+          <path d="M26 60l-7 8M54 60l7 8" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- 브랜드: 미곡상사 + 米 인장 -->
+          <text x="22" y="100" font-size="20" font-weight="800" fill="#2B2117" letter-spacing="1">미곡</text>
+          <text x="22" y="123" font-size="20" font-weight="800" fill="#2B2117" letter-spacing="1">상사</text>
+          <rect x="64" y="88" width="23" height="23" rx="3" fill="#B3382C"/>
+          <text x="75.5" y="105" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">米</text>
+
+          <!-- 중량 -->
+          <text x="22" y="166" font-size="22" font-weight="800" fill="#2B2117">10kg</text>
+
+          <!-- 중앙 품종 패널 -->
+          <rect x="100" y="26" width="84" height="224" rx="8" fill="#FFFEFA" stroke="#1E1A14" stroke-width="5.5"/>
+          <rect x="108" y="34" width="68" height="208" rx="5" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
+          <g font-family="'Black Han Sans',sans-serif" fill="#1E1A14" text-anchor="middle">
+            <text x="142" y="100" font-size="46">신</text>
+            <text x="142" y="162" font-size="46">동</text>
+            <text x="142" y="224" font-size="46">진</text>
+          </g>
+
+          <!-- 하단 표기·바코드 -->
+          <text x="22" y="226" font-size="9" fill="#6E5F4B">품종 신동진 · 도정일자 별도 표기</text>
+          <text x="22" y="238" font-size="9" fill="#6E5F4B">유통 (주)미곡상사</text>
+          <g fill="#2B2117">
+            <rect x="22" y="244" width="2.6" height="16"/><rect x="27" y="244" width="1.3" height="16"/>
+            <rect x="31" y="244" width="3.2" height="16"/><rect x="37" y="244" width="1.5" height="16"/>
+            <rect x="41" y="244" width="2.3" height="16"/><rect x="46" y="244" width="1.3" height="16"/>
+            <rect x="50" y="244" width="3" height="16"/><rect x="56" y="244" width="1.5" height="16"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="trace-copy" id="traceCopy">
+      <strong>도정일자 · 품종 · 공급처를 기록합니다</strong>
+      <span>어느 산지에서, 언제 도정해, 어떤 차로 왔는지 —<br>모든 포대의 이력이 거래명세와 함께 전달됩니다.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ SUBSCRIPTION -->
+<section class="subs" id="subs">
+  <div class="container center">
+    <span class="eyebrow">SUBSCRIPTION</span>
+    <h2 class="sec-title">다 먹을 때쯤, 새 쌀이 도착합니다</h2>
+    <p class="sec-desc">생활 패턴에 맞춘 정기배송을 준비하고 있습니다. 지금 문의를 남기시면 오픈 시 가장 먼저 안내드립니다.</p>
+    <div class="sub-grid">
+      <div class="sub-card reveal"><svg class="gicon s32"><use href="#gi-bowl"/></svg><div class="s-who">1인 가구</div><h3>5kg / 4주</h3><p>신선도와 보관 편의 중심</p><span class="sub-soon">상담 연결 예정</span></div>
+      <div class="sub-card reveal"><svg class="gicon s32"><use href="#gi-bowl"/></svg><div class="s-who">2~3인 가구</div><h3>10kg / 4주</h3><p>가성비와 안정 품질</p><span class="sub-soon">상담 연결 예정</span></div>
+      <div class="sub-card reveal"><svg class="gicon s32"><use href="#gi-sheaf"/></svg><div class="s-who">식당</div><h3>20kg / 주 1회</h3><p>밥맛 일관성과 시간 준수</p><span class="sub-soon">견적 상담 가능</span></div>
+      <div class="sub-card reveal"><svg class="gicon s32"><use href="#gi-truck"/></svg><div class="s-who">도시락 업체</div><h3>20kg / 주 2~3회</h3><p>정기 물량·하차 동선 관리</p><span class="sub-soon">견적 상담 가능</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑪ CONTACT -->
+<section class="contact reveal" id="contact">
+  <img class="contact-bg" src="assets/sunset-rice-field.png" alt="" loading="lazy" aria-hidden="true">
+  <div class="container">
+    <span class="eyebrow">CONTACT</span>
+    <h2 class="sec-title">품종·수량·지역을 남겨주세요.<br>빠르게 견적을 안내드립니다.</h2>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p>20kg 대량 납품 기준으로 당일 단가와 출고 가능 물량을 안내드립니다. 전화·카카오톡 상담도 가능합니다.</p>
+        <div class="contact-line"><span>전화</span>000-0000-0000</div>
+        <div class="contact-line"><span>카카오톡</span>@미곡상사 (채널 준비 중)</div>
+        <div class="contact-line"><span>이메일</span>hello@example.com</div>
+        <div class="contact-line"><span>상담시간</span>평일 08:00 – 18:00</div>
+      </div>
+      <form class="cform" onsubmit="event.preventDefault();alert('입력 내용을 확인했습니다. 상담 가능 시간에 맞춰 연락처를 다시 확인해 주세요.');">
+        <div class="row">
+          <div><label for="f-name">업체명 / 성함</label><input id="f-name" required placeholder="예) ○○식당"></div>
+          <div><label for="f-tel">연락처</label><input id="f-tel" required placeholder="010-0000-0000"></div>
+        </div>
+        <div class="row">
+          <div><label for="f-kind">품종</label><select id="f-kind"><option>신동진</option><option>알찬미</option><option>기타 / 상담 후 결정</option></select></div>
+          <div><label for="f-amt">수량</label><input id="f-amt" placeholder="예) 20kg × 50포"></div>
+        </div>
+        <div class="row">
+          <div><label for="f-area">납품 지역</label><input id="f-area" placeholder="예) 경기 안양시"></div>
+          <div><label for="f-date">희망 납품일</label><input id="f-date" type="date"></div>
+        </div>
+        <label for="f-msg">남기실 말씀</label>
+        <textarea id="f-msg" rows="3" placeholder="용도, 현재 거래 조건 등 자유롭게 적어주세요"></textarea>
+        <button class="btn btn-primary" type="submit">견적 문의 보내기</button>
+        <p class="form-note">신규 거래는 결제 확인 후 출고를 원칙으로 하며, 안정적인 납품을 위해 거래 조건을 명확히 안내드립니다.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="f-top">
+      <a class="logo" href="#top">미<b>곡</b>상사</a>
+      <p>대표 전화 000-0000-0000 · hello@example.com</p>
+    </div>
+    <p>상호 (주)미곡상사(가칭) · 대표 OOO · 사업자등록번호 000-00-00000<br>주소: 추후 표기 · 통신판매업 신고: 준비 중<br>© 2026 Migok Sangsa. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="m-cta"><a href="#contact">대량 납품 견적 문의</a></div>
+
+<script>
+/* ============================================================
+   1) HERO 쌀 낙하 — 또렷하게 보이는 따뜻한 톤 파티클
+============================================================ */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cv = document.getElementById('riceCanvas');
+  if(!cv || reduce) return;
+  const ctx = cv.getContext('2d');
+  let W,H,DPR, grains=[];
+
+  const PALETTE = [
+    {fill:'#F6ECD2', edge:'#E2C98F'},
+    {fill:'#EFDCAB', edge:'#D9B86B'},
+    {fill:'#E8C87E', edge:'#C9A24B'},
+    {fill:'#DDB05B', edge:'#B98A33'}
+  ];
+
+  function size(){
+    DPR = Math.min(devicePixelRatio||1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W*DPR; cv.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    const count = Math.min(140, Math.round(W*H/11000));
+    grains = Array.from({length:count}, ()=>spawn(true));
+  }
+
+  function spawn(anywhere){
+    const depth = Math.random();                 // 0=멀리, 1=가까이
+    const L = 7 + depth*11;                      // 쌀알 길이 7~18px
+    return {
+      x: Math.random()*W,
+      y: anywhere ? Math.random()*H : -20,
+      L, Wd: L*0.42,
+      depth,
+      vy: 0.5 + depth*1.5,
+      sway: 0.4 + Math.random()*0.9,
+      phase: Math.random()*Math.PI*2,
+      rot: Math.random()*Math.PI,
+      spin: (Math.random()-0.5)*0.02,
+      c: PALETTE[Math.floor(Math.random()*PALETTE.length)],
+      a: 0.45 + depth*0.5                        // 가까울수록 진하게
+    };
+  }
+
+  function drawGrain(g){
+    ctx.save();
+    ctx.translate(g.x, g.y);
+    ctx.rotate(g.rot);
+    ctx.globalAlpha = g.a;
+    if(g.depth > 0.65){ ctx.shadowColor='rgba(217,164,65,.45)'; ctx.shadowBlur=6; }
+    // 쌀알 본체
+    ctx.beginPath();
+    ctx.ellipse(0,0,g.Wd/2,g.L/2,0,0,Math.PI*2);
+    ctx.fillStyle = g.c.fill; ctx.fill();
+    ctx.lineWidth = 1; ctx.strokeStyle = g.c.edge; ctx.stroke();
+    // 하이라이트
+    ctx.shadowBlur=0;
+    ctx.beginPath();
+    ctx.ellipse(-g.Wd*0.12,-g.L*0.16,g.Wd*0.16,g.L*0.26,0,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,.55)'; ctx.fill();
+    ctx.restore();
+  }
+
+  let t=0;
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.016;
+    for(let i=0;i<grains.length;i++){
+      const g=grains[i];
+      g.y += g.vy;
+      g.x += Math.sin(t*g.sway + g.phase)*0.45;
+      g.rot += g.spin;
+      if(g.y > H+24) grains[i]=spawn(false);
+      drawGrain(g);
+    }
+    requestAnimationFrame(frame);
+  }
+  addEventListener('resize', size, {passive:true});
+  size(); frame();
+})();
+
+/* ============================================================
+   2) TRACE — 청년다방 스타일: 거대 텍스트가 스크롤 따라 흐름
+============================================================ */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sec   = document.getElementById('trace');
+  const giant = document.getElementById('traceGiant');
+  const copy  = document.getElementById('traceCopy');
+  if(!sec || !giant || reduce) return;
+
+  function update(){
+    const r = sec.getBoundingClientRect();
+    const vh = innerHeight;
+    const total = r.height - vh;
+    const p = Math.min(1, Math.max(0, -r.top / total));   // 0→1 진행률
+
+    // 가로 이동: 우측 살짝 들어온 위치 → 좌측으로 텍스트가 빠져나가도록
+    const tw = giant.scrollWidth;
+    const startX = innerWidth * 0.32;
+    const endX   = innerWidth * 0.68 - tw;
+    const x = startX + (endX - startX) * p;
+
+    // 투명도: 진입 시 차오르고, 끝에서 잦아듦
+    let op;
+    if(p < 0.18)       op = (p/0.18) * 0.45;
+    else if(p > 0.85)  op = (1-(p-0.85)/0.15) * 0.45;
+    else               op = 0.45;
+
+    giant.style.transform = `translate(${x}px, -50%)`;
+    giant.style.setProperty('--trace-alpha', op.toFixed(3));
+    giant.style.setProperty('--trace-emphasis-alpha', Math.min(0.96, op + 0.38).toFixed(3));
+
+    copy.classList.toggle('on', p > 0.42 && p < 0.96);
+    const bag = document.getElementById('traceBag');
+    if(bag) bag.classList.toggle('on', p > 0.26 && p < 0.98);
+  }
+
+  let ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{ update(); ticking=false; });
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', update, {passive:true});
+  update();
+})();
+
+/* ============================================================
+   3) QUIZ — 3문항 추천 (v2 로직 경량화 유지)
+============================================================ */
+(function(){
+  const box = document.getElementById('quizBox');
+  if(!box) return;
+
+  const PRODUCTS = {
+    sdj20:{name:'신동진 20kg', desc:'식당·도시락 공장에 맞는 대량 단위. 도정일자 이력과 함께 차량 단위로 공급합니다.', link:'#p-sdj20', tag:'B2B 주력'},
+    sdj10:{name:'신동진 10kg', desc:'3~4인 가구와 마트에 가장 무난한 선택. 신선한 도정일자 기준으로 출고합니다.', link:'#p-sdj10', tag:'가정 표준'},
+    sdj5:{name:'신동진 5kg', desc:'1~2인 가구라면 다 먹을 때쯤 새 쌀이 오는 5kg 정기배송이 잘 맞습니다.', link:'#p-sdj5', tag:'정기배송 추천'},
+    acm10:{name:'알찬미 5kg·10kg', desc:'가성비를 중시한다면 알찬미. 합리적인 가격대의 인기 품종입니다.', link:'#p-acm10', tag:'가성비'},
+    premium:{name:'프리미엄 1kg·3kg', desc:'선물·답례라면 고급 포장 체험팩을 추천합니다. 구성 상담을 도와드립니다.', link:'#p-premium', tag:'선물용'},
+    b2b:{name:'B2B 정기 납품', desc:'주간 반복 물량이라면 정기 납품 견적이 유리합니다. 품종·하차 조건을 맞춰 드립니다.', link:'#p-b2b', tag:'대량·정기'}
+  };
+
+  const QUESTIONS = [
+    {q:'누가 드시나요?', opts:[
+      {label:'1~2인 가구', s:{sdj5:2, acm10:1}},
+      {label:'3~4인 가구', s:{sdj10:2, acm10:1}},
+      {label:'식당 · 업소', s:{sdj20:2, b2b:2}},
+      {label:'선물용이에요', s:{premium:3}}
+    ]},
+    {q:'무엇이 가장 중요하세요?', opts:[
+      {label:'밥맛 · 프리미엄', s:{premium:1, sdj5:1, sdj10:1}},
+      {label:'가성비', s:{acm10:2}},
+      {label:'신선한 도정일자', s:{sdj5:1, sdj10:1}},
+      {label:'대량 안정 공급', s:{b2b:2, sdj20:1}}
+    ]},
+    {q:'얼마나 자주 필요하세요?', opts:[
+      {label:'매달 꾸준히 (정기)', s:{sdj5:1, sdj10:1}},
+      {label:'필요할 때 가끔', s:{}},
+      {label:'매주 대량으로', s:{sdj20:2, b2b:1}}
+    ]}
+  ];
+
+  let step=0, score={};
+  function render(){
+    if(step < QUESTIONS.length){
+      const cur = QUESTIONS[step];
+      box.innerHTML = `
+        <div class="quiz-step">질문 ${step+1} / ${QUESTIONS.length}</div>
+        <div class="quiz-q">${cur.q}</div>
+        <div class="quiz-opts">${cur.opts.map((o,i)=>`<button data-i="${i}">${o.label}</button>`).join('')}</div>`;
+      box.querySelectorAll('button').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          if(box.dataset.lock) return;
+          box.dataset.lock = '1';
+          btn.classList.add('picked');                    // 선택 즉시 시각 피드백
+          setTimeout(()=>{
+            delete box.dataset.lock;
+            const s = cur.opts[+btn.dataset.i].s;
+            for(const k in s) score[k]=(score[k]||0)+s[k];
+            step++; render();
+          }, 240);
+        });
+      });
+    } else {
+      let best='sdj10', bestV=-1;
+      for(const k in score) if(score[k]>bestV){best=k;bestV=score[k];}
+      const r = PRODUCTS[best];
+      box.innerHTML = `
+        <div class="quiz-result">
+          <span class="r-tag">${r.tag}</span>
+          <h3>${r.name}</h3>
+          <p>${r.desc}</p>
+          <a class="btn btn-primary" href="${r.link}">이 상품 보러 가기</a><br>
+          <button class="quiz-restart" type="button">다시 해보기</button>
+        </div>`;
+      box.querySelector('.quiz-restart').addEventListener('click',()=>{step=0;score={};render();});
+    }
+  }
+  render();
+})();
+
+/* ============================================================
+   4) 하루의 빛 — 스크롤에 따라 아침 햇살 → 해질녘으로 페이지 톤 전환
+============================================================ */
+(function(){
+  const root = document.documentElement;
+  // [진행률, --cream, --cream-deep, --line]
+  const STOPS = [
+    [0.00, '#FBF6EC', '#F3E8D2', '#E5D8BE'],  // 아침: 쌀을 뿌리는 빛
+    [0.35, '#FDF6E1', '#F7E9C4', '#E6D5B2'],  // 한낮
+    [0.68, '#F9E9C9', '#F2DAA9', '#E3C9A0'],  // 골든아워
+    [1.00, '#F2DCC4', '#E8C7A3', '#DBBC97']   // 해질녘: 쌀을 거두는 빛
+  ];
+  const hex2rgb = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+  const mix = (a,b,t) => a.map((v,i)=>Math.round(v + (b[i]-v)*t));
+  const css = r => `rgb(${r[0]},${r[1]},${r[2]})`;
+
+  function apply(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    let i = 0;
+    while(i < STOPS.length-2 && p > STOPS[i+1][0]) i++;
+    const [p0,...c0] = STOPS[i], [p1,...c1] = STOPS[i+1];
+    const t = (p - p0) / (p1 - p0);
+    root.style.setProperty('--cream',      css(mix(hex2rgb(c0[0]), hex2rgb(c1[0]), t)));
+    root.style.setProperty('--cream-deep', css(mix(hex2rgb(c0[1]), hex2rgb(c1[1]), t)));
+    root.style.setProperty('--line',       css(mix(hex2rgb(c0[2]), hex2rgb(c1[2]), t)));
+  }
+  let tick=false;
+  addEventListener('scroll', ()=>{ if(tick)return; tick=true; requestAnimationFrame(()=>{apply();tick=false;}); }, {passive:true});
+  addEventListener('resize', apply, {passive:true});
+  apply();
+})();
+
+/* ============================================================
+   5) 이력 섹션 BG — 짧은 한국쌀 알갱이 레이어
+============================================================ */
+(function(){
+  const cv = document.getElementById('traceRiceCanvas');
+  if(!cv) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = cv.getContext('2d');
+  let W,H,DPR, grains=[], clusters=[], seed=1;
+
+  const COLORS = [
+    {fill:'#F7F0DF', edge:'#CFC4AD', shade:'#B6AA91'},
+    {fill:'#EEE7D6', edge:'#BFB49F', shade:'#9F957F'},
+    {fill:'#FBF6EA', edge:'#D9CEB9', shade:'#C0B49C'},
+    {fill:'#D8D0BF', edge:'#9E9583', shade:'#776E60'}
+  ];
+
+  function reseed(){
+    seed = ((Math.round(W) * 73856093) ^ (Math.round(H) * 19349663)) >>> 0;
+    if(!seed) seed = 1;
+  }
+
+  function rand(){
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 4294967296;
+  }
+
+  function size(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth;
+    H = cv.clientHeight;
+    cv.width = Math.max(1, W * DPR);
+    cv.height = Math.max(1, H * DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    reseed();
+    const clusterCount = Math.round(Math.min(30, Math.max(10, W * H / 62000)));
+    const cols = Math.max(1, Math.ceil(Math.sqrt(clusterCount * (W / Math.max(H, 1)))));
+    const rows = Math.max(1, Math.ceil(clusterCount / cols));
+    clusters = Array.from({length:clusterCount}, (_, idx) => {
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      return {
+        x: ((col + .22 + rand() * .56) / cols) * W,
+        y: ((row + .16 + rand() * .68) / rows) * H,
+        spread: 128 + rand() * 190
+      };
+    });
+    const density = W < 720 ? 1080 : 960;
+    const floor = W < 720 ? 300 : 560;
+    const count = Math.round(Math.min(1780, Math.max(floor, W * H / density)));
+    grains = Array.from({length:count}, ()=>spawn(true));
+    drawStatic();
+  }
+
+  function normal(){
+    let u = 0, v = 0;
+    while(u === 0) u = rand();
+    while(v === 0) v = rand();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+
+  function wrap(v, max){
+    return ((v % max) + max) % max;
+  }
+
+  function spawn(anywhere){
+    const depth = rand();
+    const clustered = clusters.length && rand() < .46;
+    const cluster = clustered ? clusters[Math.floor(rand() * clusters.length)] : null;
+    const spread = cluster ? cluster.spread * (.86 + depth * .56) : 0;
+    const x = cluster ? wrap(cluster.x + normal() * spread, W) : rand() * W;
+    const y = anywhere
+      ? (cluster ? wrap(cluster.y + normal() * spread * .68, H) : rand() * H)
+      : (cluster ? -46 - rand() * 90 + normal() * 16 : -40);
+    const L = 14 + depth * 18 + (clustered ? .6 : 0);
+    return {
+      x,
+      y,
+      L,
+      Wd: L * (0.46 + rand()*0.1),
+      depth,
+      vy: 0.18 + depth * 0.66,
+      vx: (rand() - 0.5) * (0.18 + depth * 0.34),
+      sway: 0.35 + rand() * 0.8,
+      phase: rand() * Math.PI * 2,
+      rot: rand() * Math.PI,
+      spin: (rand() - 0.5) * 0.012,
+      blur: depth < .22 ? 2.8 : depth < .46 ? 1.2 : 0,
+      alpha: Math.min(.96, 0.31 + depth * 0.56 + (clustered ? .025 : 0)),
+      c: COLORS[Math.floor(rand()*COLORS.length)]
+    };
+  }
+
+  function drawGrain(g){
+    ctx.save();
+    ctx.translate(g.x, g.y);
+    ctx.rotate(g.rot);
+    ctx.globalAlpha = g.alpha;
+    ctx.shadowColor = 'rgba(7,4,2,.48)';
+    ctx.shadowBlur = 3 + g.depth * 7;
+    ctx.shadowOffsetX = 1.5 + g.depth * 2.5;
+    ctx.shadowOffsetY = 2 + g.depth * 4;
+    if(g.blur) ctx.filter = `blur(${g.blur}px)`;
+
+    ctx.beginPath();
+    ctx.ellipse(0,0,g.Wd/2,g.L/2,0,0,Math.PI*2);
+    ctx.fillStyle = g.c.fill;
+    ctx.fill();
+    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = g.c.edge;
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.beginPath();
+    ctx.ellipse(-g.Wd*.12,-g.L*.18,g.Wd*.16,g.L*.22,-.25,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,.58)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(g.Wd*.18,g.L*.18,g.Wd*.12,g.Wd*.12,0,0,Math.PI*2);
+    ctx.fillStyle = g.c.shade;
+    ctx.globalAlpha = g.alpha * .55;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawStatic(){
+    ctx.clearRect(0,0,W,H);
+    grains.forEach(drawGrain);
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(const g of grains){
+      g.y += g.vy;
+      g.x += g.vx + Math.sin((g.y + g.phase * 80) * .01) * g.sway * .08;
+      g.rot += g.spin;
+      if(g.y > H + 48 || g.x < -64 || g.x > W + 64) Object.assign(g, spawn(false));
+      drawGrain(g);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  addEventListener('resize', size, {passive:true});
+  size();
+  if(!reduce) frame();
+})();
+
+/* ============================================================
+   6) 카드 선택 상태 — 그리드별 단일 선택, 키보드 접근 지원
+============================================================ */
+(function(){
+  document.querySelectorAll('.prod-grid, .tgt-grid, .sub-grid').forEach(grid=>{
+    const cards = grid.querySelectorAll('.prod-card, .tgt-card, .sub-card');
+    cards.forEach(c=>{
+      c.classList.add('selectable');
+      c.tabIndex = 0;
+      c.setAttribute('role','button');
+      c.setAttribute('aria-pressed','false');
+      c.addEventListener('keydown',e=>{
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); }
+      });
+    });
+    grid.addEventListener('click', e=>{
+      if(e.target.closest('a')) return;                 // 링크 클릭은 선택과 분리
+      const card = e.target.closest('.selectable');
+      if(!card) return;
+      cards.forEach(c=>{
+        if(c!==card){ c.classList.remove('selected'); c.setAttribute('aria-pressed','false'); }
+      });
+      const on = card.classList.toggle('selected');
+      card.setAttribute('aria-pressed', String(on));
+    });
+  });
+})();
+
+/* ============================================================
+   7) Reveal on scroll
+============================================================ */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

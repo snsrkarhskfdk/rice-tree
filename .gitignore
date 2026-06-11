@@ -1,0 +1,6 @@
+local-server*.log
+qa-*.png
+reference-*.png
+migoksangsa_v*.html
+assets/*-source.png
+assets/*-preview.png
