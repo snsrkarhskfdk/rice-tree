@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>미곡상사 — 산지 직거래 쌀 대량 공급</title>
+<title>Rice Tree — 산지 직거래 쌀 대량 공급</title>
 <meta name="description" content="산지 직거래 기반의 안정적인 쌀 대량 공급. 신동진·알찬미 등 주요 품종을 빠르고 경쟁력 있게 공급합니다.">
 
 <!-- ============================================================
   BRAND TODO (확정 후 일괄 치환)
-  - 브랜드명: 미곡상사 (가칭) → 확정 시 전체 치환
+  - 브랜드명: Rice Tree (rice-tree.com)
   - 대표 전화: 000-0000-0000
   - 대표 이메일: hello@example.com
   - 카카오톡 채널 URL: #kakao
   - 사업자등록번호 / 주소: 푸터 placeholder
-  - 이력 섹션 배경: 어두운 갈색 바탕 + 짧은 한국쌀 알갱이 캔버스
+  - 이력 섹션 이미지: assets/rice-macro.webp 로 교체 권장
+    (현재는 Unsplash 임시 이미지. WebP 변환: cwebp -q 82 in.jpg -o rice-macro.webp)
 ============================================================ -->
 
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%232E5339'/%3E%3Cpath d='M32 54V36M32 38c0-7-8-9-12-14M32 36c0-7 8-9 12-14' stroke='%23F2EBD9' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3Cg fill='%23E8C05A'%3E%3Cellipse cx='32' cy='13' rx='5.5' ry='9'/%3E%3Cellipse cx='19' cy='19' rx='5.5' ry='9' transform='rotate(-32 19 19)'/%3E%3Cellipse cx='45' cy='19' rx='5.5' ry='9' transform='rotate(32 45 19)'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:title" content="Rice Tree — 프리미엄 쌀, 주문 다음 날 도착">
+<meta property="og:description" content="산지 직거래 D+1 출고. 신동진·알찬미 대량 납품, 도정일자 이력 관리.">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
@@ -60,7 +65,11 @@ section{padding:96px 0}
 /* ==================== HEADER ==================== */
 header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(251,246,236,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(229,216,190,.6)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px}
+.logo-mark{width:30px;height:30px;flex:none;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.logo:hover .logo-mark{transform:rotate(-6deg) scale(1.08)}
+.logo-word b{color:var(--field-green);margin-left:1px}
+footer .logo-word b{color:var(--rice-gold)}
 .logo b{color:var(--amber)}
 .nav-links{display:flex;gap:30px;font-size:15px;font-weight:600;color:var(--ink-soft)}
 .nav-links a:hover{color:var(--ink)}
@@ -76,8 +85,6 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(251,246,236,.86
     linear-gradient(168deg,#FFFAEE 0%,#F8ECCF 52%,#F0DCB0 100%);
 }
 #riceCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hero .container{position:relative;z-index:2}
-.hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);align-items:center;gap:56px}
 .hero-inner{position:relative;z-index:2;max-width:680px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--amber);margin-bottom:24px}
 .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--rice-gold);animation:pulse 2s infinite}
@@ -86,28 +93,10 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(251,246,236,.86
 .hero h1 em{font-style:normal;color:var(--amber)}
 .hero p{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);margin-bottom:36px;max-width:540px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:570px}
-.hero-bag{position:relative;width:min(100%,420px);filter:drop-shadow(0 34px 40px rgba(94,72,35,.22)) drop-shadow(0 16px 22px rgba(43,33,23,.16));animation:hero-bag-float 5.2s ease-in-out infinite alternate;will-change:transform}
-.hero-bag::before{content:"";position:absolute;inset:-9% -14%;z-index:-2;border-radius:50%;background:radial-gradient(circle at 50% 44%,rgba(217,164,65,.34),rgba(217,164,65,.18) 42%,rgba(217,164,65,0) 68%);filter:blur(10px)}
-.hero-bag::after{content:"";position:absolute;left:12%;right:10%;bottom:-4%;height:11%;z-index:-1;background:radial-gradient(ellipse at center,rgba(94,72,35,.38) 0%,rgba(94,72,35,.17) 45%,rgba(94,72,35,0) 74%);filter:blur(9px);transform:rotate(-3deg)}
-.hero-bag img{position:relative;z-index:1;width:100%;height:auto}
-@keyframes hero-bag-float{from{transform:translateY(0) rotate(.2deg)}to{transform:translateY(-12px) rotate(-.35deg)}}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;padding:15px 30px;border-radius:14px;border:none;transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-2px)}
 .btn-primary{background:var(--field-green);color:#fff;box-shadow:0 10px 24px rgba(46,83,57,.26)}
 .btn-ghost{background:rgba(255,255,255,.8);color:var(--ink);border:1px solid var(--line)}
-@media(max-width:860px){
-  .hero{min-height:auto;padding:118px 0 90px}
-  .hero-layout{grid-template-columns:1fr;gap:34px}
-  .hero-visual{order:2;min-height:390px}
-  .hero-bag{width:min(72vw,320px)}
-  .hero-inner{max-width:620px}
-}
-@media(max-width:520px){
-  .hero-visual{min-height:330px}
-  .hero-bag{width:min(78vw,270px)}
-}
-@media(prefers-reduced-motion:reduce){.hero-bag{animation:none}}
 
 /* ==================== TRUST STRIP ==================== */
 .trust{padding:0;transform:translateY(-46px);position:relative;z-index:3}
@@ -119,35 +108,86 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(251,246,236,.86
 @media(max-width:860px){.trust-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.trust-grid{grid-template-columns:1fr}}
 
+/* ==================== D+1 — 핵심 차별점 ==================== */
+.dplus{position:relative;overflow:hidden;color:#F2EBD9;
+  background:linear-gradient(158deg,#2E5339 0%,#22402C 55%,#1A3122 100%)}
+.dplus .eyebrow{color:#E8C05A}
+.dplus .sec-title{color:#FFF7E7}
+.dplus .sec-title em{font-style:normal;color:#E8C05A}
+.dplus .sec-desc{color:rgba(242,235,217,.75)}
+.dplus-mark{position:absolute;top:-4%;right:-3%;font-family:var(--font-display);
+  font-size:clamp(170px,26vw,360px);line-height:1;color:rgba(232,192,90,.09);
+  pointer-events:none;user-select:none}
+.race{margin:56px 0 10px;display:grid;gap:34px;position:relative;z-index:1}
+.race-row{display:grid;grid-template-columns:130px 1fr 110px;align-items:center;gap:18px}
+.race-label{font-size:14px;font-weight:800;color:rgba(242,235,217,.65);text-align:right}
+.race-row.migok .race-label{color:#E8C05A;font-size:15px}
+.race-track{position:relative}
+.race-line{position:relative;height:8px;border-radius:99px;background:rgba(255,255,255,.12)}
+.race-line.gold{height:10px;background:rgba(232,192,90,.18)}
+.race-prog{position:absolute;inset:0 auto 0 0;width:0;border-radius:99px}
+.race-prog.slow{background:rgba(242,235,217,.4)}
+.race-prog.fast{background:linear-gradient(90deg,#E8C05A,#FFE9A8);box-shadow:0 0 18px rgba(232,192,90,.55)}
+.race.go .race-prog.slow{animation:fillslow 7.5s linear .3s forwards}
+.race.go .race-prog.fast{animation:fillfast 1.5s cubic-bezier(.25,.9,.3,1) .6s forwards}
+@keyframes fillslow{to{width:62%}}        /* 화면 안에서도 '아직 도착 못 함' */
+@keyframes fillfast{to{width:100%}}
+.race-truck{position:absolute;width:56px;height:28px;left:0;top:50%;transform:translate(-8px,-62%);
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+.race.go .race-truck{animation:truckrun 1.5s cubic-bezier(.25,.9,.3,1) .6s forwards}
+@keyframes truckrun{to{left:calc(100% - 50px)}}
+.race-steps{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:rgba(242,235,217,.55)}
+.race-steps.gold-steps{color:rgba(232,192,90,.8)}
+.race-steps b{color:#FFE9A8;font-weight:800}
+.race-end{font-size:13.5px;font-weight:800;text-align:left}
+.race-end.gray{color:rgba(242,235,217,.5)}
+.race-end.gold-badge{font-family:var(--font-display);font-size:30px;color:#E8C05A;
+  opacity:0;transform:scale(.5)}
+.race.go .race-end.gold-badge{animation:badgepop .45s cubic-bezier(.34,1.56,.64,1) 2.05s forwards}
+@keyframes badgepop{to{opacity:1;transform:scale(1)}}
+.dplus-proof{display:flex;gap:12px;flex-wrap:wrap;margin:34px 0 8px;position:relative;z-index:1}
+.proof-chip{font-size:13.5px;font-weight:700;color:#FFF7E7;border:1px solid rgba(232,192,90,.5);
+  background:rgba(232,192,90,.10);border-radius:999px;padding:9px 18px}
+.dplus-cta{margin-top:26px;position:relative;z-index:1}
+.btn-gold{background:linear-gradient(90deg,#E8C05A,#D9A441);color:#241B12;
+  box-shadow:0 12px 28px rgba(0,0,0,.3)}
+@media(max-width:760px){
+  .race-row{grid-template-columns:1fr;gap:8px}
+  .race-label{text-align:left}
+  .race-end{margin-top:2px}
+  .dplus-mark{font-size:160px;top:auto;bottom:-4%}
+}
+@media(prefers-reduced-motion:reduce){
+  .race .race-prog.slow{width:62%}
+  .race .race-prog.fast{width:100%}
+  .race .race-truck{left:calc(100% - 50px);animation:none}
+  .race .race-end.gold-badge{opacity:1;transform:none;animation:none}
+  .race.go .race-prog.slow,.race.go .race-prog.fast{animation:none}
+}
+
 /* ==================== TRACE — 청년다방 스타일 스크롤 오버랩 ==================== */
 .trace{height:320vh;position:relative;padding:0}
-.trace-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#24180f}
-.trace-media{position:absolute;inset:0;
-  background:
-    radial-gradient(980px 600px at 50% 42%,rgba(111,75,39,.76),rgba(64,42,22,.54) 48%,rgba(36,24,15,.96) 100%),
-    linear-gradient(180deg,#2B1D12 0%,#3A2617 46%,#24180F 100%)}
-.trace-rice-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.trace-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--dark)}
+.trace-media{position:absolute;inset:0}
+.trace-media canvas{width:100%;height:100%;display:block}
 .trace-media::after{content:"";position:absolute;inset:0;
-  z-index:2;
-  background:
-    radial-gradient(80% 60% at 50% 50%, transparent 26%, rgba(24,15,9,.38) 100%),
-    linear-gradient(180deg,rgba(22,14,8,.20) 0%,rgba(22,14,8,.06) 46%,rgba(22,14,8,.50) 100%)}
+  background:linear-gradient(180deg,rgba(36,27,18,.42) 0%,rgba(36,27,18,.08) 42%,rgba(36,27,18,.52) 100%),
+             radial-gradient(80% 60% at 50% 50%, transparent 30%, rgba(36,27,18,.30) 100%)}
 .trace-giant{position:absolute;top:50%;left:0;transform:translate(8vw,-50%);
   font-family:var(--font-display);font-weight:400;white-space:nowrap;
   font-size:clamp(72px,13vw,180px);letter-spacing:.01em;
-  color:rgba(255,247,231,var(--trace-alpha,.45));
+  color:rgba(255,247,231,.45);
   text-shadow:0 3px 34px rgba(36,27,18,.62), 0 1px 4px rgba(36,27,18,.4);
   will-change:transform,opacity;z-index:4}
-.trace-giant .trace-emphasis{color:rgba(30,24,18,var(--trace-emphasis-alpha,.72));opacity:.88;
-  text-shadow:0 3px 26px rgba(255,247,231,.22),0 1px 8px rgba(36,27,18,.38)}
-.trace-copy{position:absolute;left:50%;top:11%;transform:translateX(-50%);text-align:center;z-index:6;
-  opacity:0;transition:opacity .5s ease;width:min(680px,88vw);
-  padding:16px 22px;border-radius:16px;
-  background:rgba(255,247,231,.86);border:1px solid rgba(255,255,255,.58);
-  box-shadow:0 12px 34px rgba(24,17,10,.22);backdrop-filter:blur(8px)}
+.trace-copy{position:absolute;left:50%;top:10%;transform:translateX(-50%);text-align:center;z-index:5;
+  opacity:0;transition:opacity .5s ease;width:min(620px,88vw);
+  background:rgba(251,246,236,.95);border:1px solid rgba(201,162,75,.55);border-radius:16px;
+  padding:24px 32px 22px;box-shadow:0 20px 46px rgba(0,0,0,.38)}
+.trace-copy .t-chip{display:inline-block;font-style:normal;font-size:12px;font-weight:800;letter-spacing:.12em;
+  color:#fff;background:var(--amber);border-radius:999px;padding:5px 14px;margin-bottom:12px}
 .trace-copy.on{opacity:1}
-.trace-copy strong{display:block;color:#201812;font-size:clamp(18px,2.4vw,26px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-.trace-copy span{color:rgba(43,33,23,.74);font-size:clamp(13.5px,1.4vw,16px);line-height:1.7}
+.trace-copy strong{display:block;color:var(--ink);font-size:clamp(18px,2.4vw,26px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.trace-copy span{color:var(--ink-soft);font-size:clamp(13.5px,1.4vw,16px);line-height:1.7}
 
 /* ==================== PRODUCTS (v2 6종 그리드 유지) ==================== */
 .products{background:var(--cream)}
@@ -240,22 +280,21 @@ noscript .quiz-box{display:none}
 @media(max-width:960px){.sub-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.sub-grid{grid-template-columns:1fr}}
 
-.contact{position:relative;overflow:hidden;background:var(--dark);color:#FFF7E7}
-.contact.reveal{opacity:1;transform:none;transition:none}
-.contact-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);
-  transition:opacity 1.2s ease,transform 1.6s ease;filter:brightness(1.25) saturate(1.06) contrast(1.04);z-index:0}
-.contact.in .contact-bg{opacity:1;transform:scale(1)}
-.contact::after{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(90deg,rgba(36,27,18,.82) 0%,rgba(36,27,18,.62) 42%,rgba(36,27,18,.34) 100%),
-             linear-gradient(180deg,rgba(36,27,18,.20) 0%,rgba(36,27,18,.56) 100%)}
-.contact .container{position:relative;z-index:1}
-.contact .eyebrow{color:#F1BD63}
-.contact .sec-title{color:#FFF7E7;text-shadow:0 3px 18px rgba(0,0,0,.34)}
+/* ==================== CONTACT ==================== */
+.contact{
+  background:
+    linear-gradient(90deg,rgba(36,27,18,.76) 0%,rgba(36,27,18,.50) 46%,rgba(36,27,18,.26) 100%),
+    url("sunset-rice-field.png") center / cover no-repeat;
+  color:#FFF7E7;
+}
+.contact .eyebrow{color:#FFE9A8}
+.contact .sec-title{color:#FFF7E7;text-shadow:0 2px 18px rgba(36,27,18,.42)}
 .contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;margin-top:48px;align-items:start}
-.contact-info p{color:rgba(255,247,231,.82);margin-bottom:26px;text-shadow:0 2px 12px rgba(0,0,0,.28)}
+.contact-info p{color:rgba(255,247,231,.84);margin-bottom:26px}
 .contact-line{display:flex;gap:12px;align-items:center;margin-bottom:14px;font-weight:700}
-.contact-line span{font-size:13px;font-weight:700;color:#F1BD63;min-width:64px}
-.cform{background:rgba(255,255,255,.94);border:1px solid rgba(255,247,231,.34);border-radius:var(--radius);padding:34px 30px;box-shadow:0 18px 48px rgba(20,12,5,.26);color:var(--ink)}
+.contact-line span{font-size:13px;font-weight:700;color:#FFE9A8;min-width:64px}
+.cform{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;box-shadow:var(--shadow)}
+.contact .cform{color:var(--ink)}
 .cform label{display:block;font-size:13.5px;font-weight:700;margin:0 0 6px}
 .cform input,.cform select,.cform textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;background:var(--cream);margin-bottom:18px}
 .cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--rice-gold);border-color:transparent}
@@ -263,6 +302,7 @@ noscript .quiz-box{display:none}
 .cform button{width:100%;margin-top:4px}
 .form-note{font-size:12.5px;color:var(--ink-soft);margin-top:14px;line-height:1.6}
 @media(max-width:860px){.contact-wrap{grid-template-columns:1fr}}
+@media(max-width:600px){.cform .row{grid-template-columns:1fr;gap:0}}
 
 /* ==================== FOOTER ==================== */
 footer{background:var(--dark);color:rgba(244,235,219,.6);padding:48px 0;font-size:13.5px}
@@ -274,6 +314,110 @@ footer p{line-height:1.8}
 .m-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(36,27,18,.94);backdrop-filter:blur(8px)}
 .m-cta a{display:block;text-align:center;background:var(--rice-gold);color:var(--dark);font-weight:800;border-radius:12px;padding:14px}
 @media(max-width:720px){.m-cta{display:block}}
+
+
+/* ==================== v1.7 인터랙티브/그래픽 강화 ==================== */
+/* 스크롤 진행바 — 하루의 빛 그라디언트 */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,#FFE9A8,#E8C05A,#D9A441,#C8862A);border-radius:0 99px 99px 0}
+
+/* 헤더 스크롤 반응 + 활성 메뉴 */
+header{transition:box-shadow .25s ease,background .25s ease}
+header.scrolled{box-shadow:0 6px 24px rgba(94,72,35,.12);background:rgba(251,246,236,.95)}
+.nav-links a{position:relative;padding-bottom:4px;transition:color .15s}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2.5px;
+  border-radius:99px;background:var(--rice-gold)}
+
+/* 히어로 2열 + 포대 비주얼 */
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;
+  filter:drop-shadow(0 30px 40px rgba(94,72,35,.30))}
+.hero-visual img{width:min(380px,30vw);height:auto;animation:bag-float 5s ease-in-out infinite alternate;
+  transition:transform .3s ease;will-change:transform}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}}
+
+/* 주문 마감 카운트다운 */
+.hero-deadline{display:inline-flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:26px;
+  background:rgba(255,255,255,.82);border:1px solid var(--line);border-left:4px solid var(--rice-gold);
+  border-radius:12px;padding:13px 18px}
+.hd-label{font-size:13px;font-weight:800;color:var(--amber)}
+.hd-time{font-size:24px;font-weight:800;letter-spacing:.04em;color:var(--ink);
+  font-variant-numeric:tabular-nums;min-width:118px}
+.hd-sub{font-size:12.5px;color:var(--ink-soft);flex-basis:100%}
+.hero-deadline.closed .hd-label{color:var(--field-green)}
+
+/* 버튼 샤인 스윕 */
+.btn{position:relative;overflow:hidden}
+.btn-primary::after,.btn-gold::after{content:"";position:absolute;top:0;bottom:0;width:46%;left:-60%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-18deg);transition:left .55s ease}
+.btn-primary:hover::after,.btn-gold:hover::after{left:130%}
+
+/* D+1 곡선 디바이더 */
+.dplus{padding:118px 0 128px}
+.wave{position:absolute;left:0;right:0;width:100%;height:54px;display:block}
+.wave-top{top:0}
+.wave-bottom{bottom:0}
+
+/* 약속 수치 스트립 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:54px;
+  position:relative;z-index:1;border-top:1px solid rgba(232,192,90,.28);padding-top:36px}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);color:#FFE9A8;line-height:1.1}
+.stat-label{font-size:13.5px;color:rgba(242,235,217,.7);margin-top:6px;font-weight:600}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr;gap:26px 12px}}
+
+/* FAQ 아코디언 */
+.faq{background:var(--cream)}
+.faq-list{max-width:720px;margin:44px auto 0;text-align:left}
+.faq-item{border:1px solid var(--line);border-radius:14px;background:var(--white);
+  margin-bottom:12px;overflow:hidden;transition:box-shadow .2s ease}
+.faq-item[open]{box-shadow:var(--shadow);border-color:rgba(217,164,65,.55)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:18px 22px;font-size:16px;font-weight:800;color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-x{position:relative;width:18px;height:18px;flex:none}
+.faq-x::before,.faq-x::after{content:"";position:absolute;background:var(--amber);border-radius:2px;
+  transition:transform .25s ease}
+.faq-x::before{left:0;right:0;top:8px;height:2.5px}
+.faq-x::after{top:0;bottom:0;left:8px;width:2.5px}
+.faq-item[open] .faq-x::after{transform:scaleY(0)}
+.faq-item p{padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px;line-height:1.75}
+
+/* 절차 스텝 호버 */
+.proc-dot{transition:transform .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease}
+.proc-step:hover .proc-dot{background:var(--rice-gold);color:#fff;transform:scale(1.12);
+  box-shadow:0 8px 18px rgba(217,164,65,.4)}
+
+/* 위로 가기 */
+.to-top{position:fixed;right:22px;bottom:24px;z-index:95;width:46px;height:46px;border-radius:50%;
+  border:none;background:var(--field-green);color:#fff;font-size:19px;font-weight:800;
+  box-shadow:0 10px 24px rgba(46,83,57,.35);opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .3s ease,transform .3s ease}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+@media(max-width:720px){.to-top{display:none}}
+
+/* 폼 도착 플래시 (퀴즈 → 문의 연결) */
+.cform.flash{animation:formflash 1.4s ease}
+@keyframes formflash{0%,100%{box-shadow:var(--shadow)}30%{box-shadow:0 0 0 5px rgba(217,164,65,.5),var(--shadow)}}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-visual img{animation:none}
+  .btn-primary::after,.btn-gold::after{display:none}
+  .scroll-progress{display:none}
+}
+
+/* Rice Tree 브랜드 모티프: eyebrow 쌀알 불릿 */
+.eyebrow::before{content:"";display:inline-block;width:7px;height:13px;border-radius:50%;
+  background:linear-gradient(180deg,#fff 0%,#FBF1D6 40%,#E8C05A 100%);
+  border:1px solid rgba(185,127,35,.4);transform:rotate(20deg);
+  margin-right:8px;vertical-align:-2px}
+
+/* 푸터 워터마크 로고 */
+footer{position:relative;overflow:hidden}
+.footer-tree{position:absolute;right:-30px;bottom:-46px;width:240px;height:240px;
+  opacity:.07;pointer-events:none}
 
 /* ==================== SELECTABLE CARDS ==================== */
 .selectable{cursor:pointer;outline:none}
@@ -297,18 +441,13 @@ footer p{line-height:1.8}
 .trust-item .gicon{margin-bottom:2px}
 
 /* ==================== TRACE RICE BAG ==================== */
-.trace-bag{position:absolute;left:50%;bottom:-7%;width:clamp(300px,32vw,430px);z-index:3;
+.trace-bag{position:absolute;left:50%;bottom:1%;width:min(92vw,clamp(450px,54vw,720px));z-index:3;
   opacity:0;transform:translate(-50%,40px);transition:opacity .7s ease,transform .7s ease;
-  filter:drop-shadow(0 34px 44px rgba(0,0,0,.48)) drop-shadow(0 12px 18px rgba(43,33,23,.24));
-  pointer-events:none;will-change:transform,opacity}
-.trace-bag::after{content:"";position:absolute;left:9%;right:10%;bottom:-4%;height:12%;
-  background:radial-gradient(ellipse at center,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 44%,rgba(0,0,0,0) 72%);
-  transform:rotate(-3deg);filter:blur(8px);opacity:.7;z-index:-1}
+  filter:drop-shadow(0 26px 38px rgba(0,0,0,.45));pointer-events:none}
 .trace-bag.on{opacity:1;transform:translate(-50%,0)}
-.trace-bag img{position:relative;z-index:1;width:100%;height:auto;animation:bag-float 4.8s ease-in-out infinite alternate;transform-origin:center bottom}
-.trace-bag svg{display:none}
+.trace-bag img{width:100%;height:auto;animation:bag-float 4.6s ease-in-out infinite alternate}
 @keyframes bag-float{from{transform:translateY(0) rotate(-.3deg)}to{transform:translateY(-9px) rotate(.4deg)}}
-@media(max-width:720px){.trace-bag{width:min(72vw,340px);bottom:6%;left:50%}.trace-bag::after{bottom:-6%;height:10%}}
+@media(max-width:720px){.trace-bag{width:min(92vw,495px);bottom:4%}}
 @media(prefers-reduced-motion:reduce){.trace-bag{opacity:1;transform:translate(-50%,0)}.trace-bag img{animation:none}}
 
 /* ==================== MOTION ==================== */
@@ -321,7 +460,6 @@ footer p{line-height:1.8}
   .trace-sticky{position:relative;height:78vh}
   .trace-giant{font-size:clamp(40px,8vw,96px);white-space:normal;left:6vw;right:6vw;transform:translateY(-50%);opacity:.34}
   .trace-copy{opacity:1}
-  .contact-bg{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
 </style>
@@ -449,13 +587,114 @@ footer p{line-height:1.8}
       <ellipse cx="17" cy="30.5" rx="4" ry="6.6" fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9" transform="rotate(18 17 30.5)"/>
       <path d="M41 33l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#fff"/>
     </symbol>
+    <symbol id="riceBag" viewBox="0 0 360 392" font-family="'Pretendard Variable',Pretendard,sans-serif">
+        <defs>
+          <linearGradient id="bagBody" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FEFAF0"/><stop offset=".55" stop-color="#F6ECD4"/><stop offset="1" stop-color="#E6D4AC"/>
+          </linearGradient>
+          <linearGradient id="bagSide" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#B49F74"/><stop offset="1" stop-color="#D4C299"/>
+          </linearGradient>
+          <linearGradient id="bagTop" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFDF6"/><stop offset="1" stop-color="#EBDDBC"/>
+          </linearGradient>
+          <linearGradient id="crimp" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F3E8CC"/><stop offset=".5" stop-color="#E2D2AC"/><stop offset="1" stop-color="#F0E4C6"/>
+          </linearGradient>
+          <radialGradient id="bagSheen" cx=".28" cy=".18" r=".9">
+            <stop offset="0" stop-color="rgba(255,255,255,.5)"/><stop offset=".5" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+          <radialGradient id="ground" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="rgba(10,6,2,.42)"/><stop offset="1" stop-color="rgba(10,6,2,0)"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 바닥 그림자 -->
+        <ellipse cx="178" cy="366" rx="158" ry="19" fill="url(#ground)"/>
+
+        <!-- 윗면 슬리버 -->
+        <polygon points="30,74 86,58 302,80 252,98" fill="url(#bagTop)"/>
+
+        <!-- 좌측 거셋(측면) : 뒤로 물러나는 면 -->
+        <g transform="translate(30,74) skewY(-16)">
+          <rect x="0" y="0" width="56" height="276" fill="url(#bagSide)"/>
+          <rect x="0" y="0" width="56" height="11" fill="#A8946B"/>
+          <rect x="0" y="265" width="56" height="11" fill="#A8946B"/>
+          <line x1="28" y1="14" x2="28" y2="262" stroke="#8F7B55" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <rect x="50" y="0" width="6" height="276" fill="rgba(255,255,255,.22)"/>
+        </g>
+
+        <!-- 정면 (쿼터뷰: 우측으로 살짝 기울어 물러남) -->
+        <g transform="translate(86,58) skewY(6)">
+          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagBody)"/>
+          <!-- 압착부 -->
+          <rect x="-3" y="0" width="222" height="13" rx="4" fill="url(#crimp)"/>
+          <path d="M2 4h212M2 9h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
+          <rect x="-3" y="263" width="222" height="13" rx="4" fill="url(#crimp)"/>
+          <path d="M2 267h212M2 272h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
+          <!-- 볼록한 입체: 우측 안쪽 그림자 + 광택 -->
+          <rect x="178" y="2" width="38" height="272" fill="rgba(122,93,49,.12)"/>
+          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagSheen)"/>
+          <path d="M30 6 L84 6 L34 270 L8 270 Z" fill="rgba(255,255,255,.13)"/>
+
+          <!-- 특등급 배지 -->
+          <circle cx="40" cy="44" r="17" fill="#1E1A14"/>
+          <circle cx="40" cy="44" r="17" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
+          <text x="40" y="50" text-anchor="middle" font-size="15" font-weight="800" fill="#E8C05A">특</text>
+          <path d="M26 60l-7 8M54 60l7 8" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- 브랜드: RICE TREE + 米 인장 -->
+          <text x="22" y="99" font-size="17" font-weight="800" fill="#2B2117" letter-spacing="2.5">RICE</text>
+          <text x="22" y="121" font-size="17" font-weight="800" fill="#2E5339" letter-spacing="2.5">TREE</text>
+          <rect x="64" y="88" width="23" height="23" rx="3" fill="#B3382C"/>
+          <text x="75.5" y="105" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">米</text>
+
+          <!-- 중량 -->
+          <text x="22" y="166" font-size="22" font-weight="800" fill="#2B2117">10kg</text>
+
+          <!-- 중앙 품종 패널 -->
+          <rect x="100" y="26" width="84" height="224" rx="8" fill="#FFFEFA" stroke="#1E1A14" stroke-width="5.5"/>
+          <rect x="108" y="34" width="68" height="208" rx="5" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
+          <g font-family="'Black Han Sans',sans-serif" fill="#1E1A14" text-anchor="middle">
+            <text x="142" y="100" font-size="46">신</text>
+            <text x="142" y="162" font-size="46">동</text>
+            <text x="142" y="224" font-size="46">진</text>
+          </g>
+
+          <!-- 하단 표기·바코드 -->
+          <text x="22" y="226" font-size="9" fill="#6E5F4B">품종 신동진 · 도정일자 별도 표기</text>
+          <text x="22" y="238" font-size="9" fill="#6E5F4B">유통 라이스트리 · rice-tree.com</text>
+          <g fill="#2B2117">
+            <rect x="22" y="244" width="2.6" height="16"/><rect x="27" y="244" width="1.3" height="16"/>
+            <rect x="31" y="244" width="3.2" height="16"/><rect x="37" y="244" width="1.5" height="16"/>
+            <rect x="41" y="244" width="2.3" height="16"/><rect x="46" y="244" width="1.3" height="16"/>
+            <rect x="50" y="244" width="3" height="16"/><rect x="56" y="244" width="1.5" height="16"/>
+          </g>
+        </g>
+      </symbol>
+
+    <!-- Rice Tree 로고: 쌀알이 잎이 되는 나무 -->
+    <symbol id="rtLogo" viewBox="0 0 48 48">
+      <path d="M24 45V31M24 33c0-5.5-6-7-9.5-11M24 31c0-5.5 6-7 9.5-11"
+            stroke="#2E5339" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+      <g fill="url(#grainGrad)" stroke="rgba(185,127,35,.55)" stroke-width=".9">
+        <ellipse cx="24" cy="10.5" rx="4.6" ry="7.6"/>
+        <ellipse cx="13.5" cy="16" rx="4.6" ry="7.6" transform="rotate(-33 13.5 16)"/>
+        <ellipse cx="34.5" cy="16" rx="4.6" ry="7.6" transform="rotate(33 34.5 16)"/>
+        <ellipse cx="17.5" cy="25" rx="3.8" ry="6.2" transform="rotate(-15 17.5 25)"/>
+        <ellipse cx="30.5" cy="25" rx="3.8" ry="6.2" transform="rotate(15 30.5 25)"/>
+      </g>
+      <path d="M40 6l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#E8C05A"/>
+    </symbol>
   </defs>
 </svg>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header>
   <div class="container nav">
-    <a class="logo" href="#top">미<b>곡</b>상사</a>
+    <a class="logo" href="#top"><svg class="logo-mark" aria-hidden="true"><use href="#rtLogo"/></svg><span class="logo-word">Rice<b>Tree</b></span></a>
     <nav class="nav-links">
+      <a href="#dplus">D+1 배송</a>
       <a href="#products">상품</a>
       <a href="#quiz">쌀 추천</a>
       <a href="#process">거래 절차</a>
@@ -469,22 +708,23 @@ footer p{line-height:1.8}
 <!-- ① HERO -->
 <section class="hero" id="top">
   <canvas id="riceCanvas" aria-hidden="true"></canvas>
-  <div class="container">
-    <div class="hero-layout">
-      <div class="hero-inner">
-        <span class="hero-badge"><span class="dot"></span>전날 주문 · 익일 차량 출고</span>
-        <h1>산지에서 바로,<br><em>안정적인 쌀 대량 공급</em></h1>
-        <p>신동진·알찬미 등 주요 품종을 산지 직거래로 빠르고 경쟁력 있게 공급합니다. 중도매·마트·식당·도시락 공장 납품 상담을 받습니다.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">대량 납품 견적 받기</a>
-          <a class="btn btn-ghost" href="#quiz">우리집 쌀 추천받기</a>
-        </div>
+  <div class="container hero-grid">
+    <div class="hero-inner">
+      <span class="hero-badge"><span class="dot"></span>오늘 주문 마감 → 내일 아침 차량 출고</span>
+      <h1>프리미엄 쌀,<br>주문 다음 날 <em>도착합니다</em></h1>
+      <p>다른 곳에서는 어려운 일입니다. 산지·정미소와의 신용 거래가 있어야 가능한 속도 — 신동진·알찬미를 재고 없이도 익일 차량으로 보냅니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">대량 납품 견적 받기</a>
+        <a class="btn btn-ghost" href="#quiz">우리집 쌀 추천받기</a>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-bag">
-          <img src="assets/rice-tree-shindongjin-10kg.png" alt="" loading="eager">
-        </div>
+      <div class="hero-deadline" id="heroDeadline" aria-live="off">
+        <span class="hd-label">오늘 주문 마감까지</span>
+        <span class="hd-time" id="hdTime">--:--:--</span>
+        <span class="hd-sub">17:00 이전 결제 확인분, 내일 아침 출고</span>
       </div>
+    </div>
+    <div class="hero-visual" id="heroVisual" aria-hidden="true">
+      <img src="shindongjin-rice-cutout-clean.png" alt="" decoding="async">
     </div>
   </div>
 </section>
@@ -509,6 +749,84 @@ footer p{line-height:1.8}
         <svg class="gicon"><use href="#gi-pay"/></svg>
         <h3>결제 확인 후 출고</h3><p>거래 조건을 명확히 안내하고, 결제 확인 후 출고를 원칙으로 안정적인 납품을 약속합니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ②-1 D+1 — 핵심 차별점: 프리미엄 쌀 익일 배송 -->
+<section class="dplus" id="dplus">
+  <svg class="wave wave-top" viewBox="0 0 1440 54" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 L1440,0 L1440,18 C1200,48 960,4 720,30 C480,56 240,12 0,36 Z" style="fill:var(--cream)"/>
+  </svg>
+  <svg class="wave wave-bottom" viewBox="0 0 1440 54" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,54 L0,34 C240,6 480,52 720,26 C960,2 1200,46 1440,22 L1440,54 Z" fill="#241B12"/>
+  </svg>
+  <div class="dplus-mark" aria-hidden="true">D+1</div>
+  <div class="container">
+    <span class="eyebrow">WHY US</span>
+    <h2 class="sec-title">프리미엄 쌀을 <em>내일</em> 받을 수 있는 곳,<br>찾기 어려우셨을 겁니다</h2>
+    <p class="sec-desc">산지 수배, 도정 대기, 물류 — 보통은 이 과정에 며칠이 걸립니다. Rice Tree는 산지·정미소와의 신용 거래로 이 모든 단계를 하루로 줄였습니다.</p>
+
+    <div class="race" id="race">
+      <!-- 일반 유통 경로 -->
+      <div class="race-row">
+        <div class="race-label">일반 유통 경로</div>
+        <div class="race-track">
+          <div class="race-line"><div class="race-prog slow"></div></div>
+          <div class="race-steps">
+            <span>주문</span><span>산지 수배</span><span>도정 대기</span><span>상차</span><span>도착</span>
+          </div>
+        </div>
+        <div class="race-end gray">수일 이상</div>
+      </div>
+      <!-- Rice Tree -->
+      <div class="race-row migok">
+        <div class="race-label">Rice Tree</div>
+        <div class="race-track">
+          <div class="race-line gold"><div class="race-prog fast"></div>
+            <svg class="race-truck" viewBox="0 0 60 30" aria-hidden="true">
+              <rect x="2" y="5" width="30" height="14" rx="2.5" fill="#FFF7E7"/>
+              <path d="M32 9h12c1.8 0 3.4.9 4.3 2.4l3.2 5.2c.5.8.7 1.7.7 2.6V21H32V9z" fill="#E8C05A"/>
+              <circle cx="13" cy="22" r="5" fill="#1F3A28"/><circle cx="13" cy="22" r="2" fill="#E8C05A"/>
+              <circle cx="42" cy="22" r="5" fill="#1F3A28"/><circle cx="42" cy="22" r="2" fill="#E8C05A"/>
+              <circle cx="51.5" cy="15" r="2" fill="#FFF2C4"/>
+            </svg>
+          </div>
+          <div class="race-steps gold-steps">
+            <span>오늘 주문</span><span></span><span></span><span></span><span><b>내일 아침 도착</b></span>
+          </div>
+        </div>
+        <div class="race-end gold-badge">D+1</div>
+      </div>
+    </div>
+
+  <div class="dplus-proof">
+    <span class="proof-chip">산지·정미소 신용 거래</span>
+    <span class="proof-chip">주문 기반 익일 배차</span>
+    <span class="proof-chip">도정 직후 출고</span>
+  </div>
+  <div class="dplus-cta">
+    <a class="btn btn-gold" href="#contact">오늘 견적 받고, 내일 받아보세요</a>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><div class="stat-num">D+1</div><div class="stat-label">주문 다음 날 출고</div></div>
+    <div class="stat"><div class="stat-num">17:00</div><div class="stat-label">당일 주문 마감</div></div>
+    <div class="stat"><div class="stat-num"><span class="count" data-to="100">0</span>%</div><div class="stat-label">하차 전 결제 확인</div></div>
+    <div class="stat"><div class="stat-num"><span class="count" data-to="0" data-from="9">9</span>건</div><div class="stat-label">이력 없이 나가는 포대</div></div>
+  </div>
+  </div>
+</section>
+
+<!-- ③ WHY US / STRENGTHS -->
+<section class="strengths">
+  <div class="container">
+    <span class="eyebrow">WHY US</span>
+    <h2 class="sec-title">쌀 유통에서 가장 어려운 일을<br>이미 하고 있습니다</h2>
+    <div class="str-grid">
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-sheaf"/></svg><div class="str-num">공급망</div><h3>산지·정미소·농협 연결</h3><p>좋은 물량을 안정적으로 확보하는 것이 쌀 유통의 가장 큰 진입장벽입니다. 당진·전남·군산·순천 등 주요 산지 네트워크로 주요 품종을 확보합니다.</p></div>
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-clock"/></svg><div class="str-num">속도</div><h3>전날 주문 → 익일 출고</h3><p>주문 기반 출고 구조로 신선한 도정일자의 쌀이 빠르게 도착합니다. 재고로 묵힌 쌀이 아니라, 주문에 맞춰 움직이는 쌀입니다.</p></div>
+      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-pay"/></svg><div class="str-num">단가</div><h3>같은 품질, 더 나은 조건</h3><p>산지 직거래 구조로 동일 품종 기준 경쟁력 있는 단가를 제시합니다. 비교 견적을 환영합니다.</p></div>
     </div>
   </div>
 </section>
@@ -574,19 +892,6 @@ footer p{line-height:1.8}
     <p class="sec-desc">세 가지 질문이면 충분합니다. 인원과 용도에 맞는 품종·중량을 추천해 드립니다.</p>
     <div class="quiz-box" id="quizBox" aria-live="polite"></div>
     <noscript><p style="margin-top:24px;color:var(--ink-soft)">추천 기능은 브라우저 스크립트가 필요합니다. 위 상품 카드에서 직접 선택하시거나 문의를 남겨주세요.</p></noscript>
-  </div>
-</section>
-
-<!-- ⑥ STRENGTHS -->
-<section class="strengths">
-  <div class="container">
-    <span class="eyebrow">WHY US</span>
-    <h2 class="sec-title">쌀 유통에서 가장 어려운 일을<br>이미 하고 있습니다</h2>
-    <div class="str-grid">
-      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-sheaf"/></svg><div class="str-num">공급망</div><h3>산지·정미소·농협 연결</h3><p>좋은 물량을 안정적으로 확보하는 것이 쌀 유통의 가장 큰 진입장벽입니다. 당진·전남·군산·순천 등 주요 산지 네트워크로 주요 품종을 확보합니다.</p></div>
-      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-clock"/></svg><div class="str-num">속도</div><h3>전날 주문 → 익일 출고</h3><p>주문 기반 출고 구조로 신선한 도정일자의 쌀이 빠르게 도착합니다. 재고로 묵힌 쌀이 아니라, 주문에 맞춰 움직이는 쌀입니다.</p></div>
-      <div class="str-card reveal"><svg class="gicon s32"><use href="#gi-pay"/></svg><div class="str-num">단가</div><h3>같은 품질, 더 나은 조건</h3><p>산지 직거래 구조로 동일 품종 기준 경쟁력 있는 단가를 제시합니다. 비교 견적을 환영합니다.</p></div>
-    </div>
   </div>
 </section>
 
@@ -659,102 +964,17 @@ footer p{line-height:1.8}
   </div>
 </section>
 
-<!-- ③ SIGNATURE: 이력 스크롤 오버랩 -->
 <section class="trace" id="trace" aria-label="한 포대마다 이력이 따라옵니다">
   <div class="trace-sticky">
     <div class="trace-media">
-      <canvas class="trace-rice-canvas" id="traceRiceCanvas" aria-hidden="true"></canvas>
+      <canvas id="riceField" aria-label="한국 단립종 쌀알 클로즈업"></canvas>
     </div>
-    <h2 class="trace-giant" id="traceGiant">한 포대마다 <span class="trace-emphasis">이력이</span> 따라옵니다</h2>
+    <h2 class="trace-giant" id="traceGiant">한 포대마다 이력이 따라옵니다</h2>
     <div class="trace-bag" id="traceBag" aria-hidden="true">
-      <img src="assets/rice-tree-shindongjin-10kg.png" alt="" loading="lazy">
-      <svg viewBox="0 0 360 392" font-family="'Pretendard Variable',Pretendard,sans-serif">
-        <defs>
-          <linearGradient id="bagBody" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#FEFAF0"/><stop offset=".55" stop-color="#F6ECD4"/><stop offset="1" stop-color="#E6D4AC"/>
-          </linearGradient>
-          <linearGradient id="bagSide" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#B49F74"/><stop offset="1" stop-color="#D4C299"/>
-          </linearGradient>
-          <linearGradient id="bagTop" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#FFFDF6"/><stop offset="1" stop-color="#EBDDBC"/>
-          </linearGradient>
-          <linearGradient id="crimp" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#F3E8CC"/><stop offset=".5" stop-color="#E2D2AC"/><stop offset="1" stop-color="#F0E4C6"/>
-          </linearGradient>
-          <radialGradient id="bagSheen" cx=".28" cy=".18" r=".9">
-            <stop offset="0" stop-color="rgba(255,255,255,.5)"/><stop offset=".5" stop-color="rgba(255,255,255,0)"/>
-          </radialGradient>
-          <radialGradient id="ground" cx=".5" cy=".5" r=".5">
-            <stop offset="0" stop-color="rgba(10,6,2,.42)"/><stop offset="1" stop-color="rgba(10,6,2,0)"/>
-          </radialGradient>
-        </defs>
-
-        <!-- 바닥 그림자 -->
-        <ellipse cx="178" cy="366" rx="158" ry="19" fill="url(#ground)"/>
-
-        <!-- 윗면 슬리버 -->
-        <polygon points="30,74 86,58 302,80 252,98" fill="url(#bagTop)"/>
-
-        <!-- 좌측 거셋(측면) : 뒤로 물러나는 면 -->
-        <g transform="translate(30,74) skewY(-16)">
-          <rect x="0" y="0" width="56" height="276" fill="url(#bagSide)"/>
-          <rect x="0" y="0" width="56" height="11" fill="#A8946B"/>
-          <rect x="0" y="265" width="56" height="11" fill="#A8946B"/>
-          <line x1="28" y1="14" x2="28" y2="262" stroke="#8F7B55" stroke-width="1.4" stroke-dasharray="4 5"/>
-          <rect x="50" y="0" width="6" height="276" fill="rgba(255,255,255,.22)"/>
-        </g>
-
-        <!-- 정면 (쿼터뷰: 우측으로 살짝 기울어 물러남) -->
-        <g transform="translate(86,58) skewY(6)">
-          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagBody)"/>
-          <!-- 압착부 -->
-          <rect x="-3" y="0" width="222" height="13" rx="4" fill="url(#crimp)"/>
-          <path d="M2 4h212M2 9h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
-          <rect x="-3" y="263" width="222" height="13" rx="4" fill="url(#crimp)"/>
-          <path d="M2 267h212M2 272h212" stroke="#CDBB92" stroke-width=".9" opacity=".8"/>
-          <!-- 볼록한 입체: 우측 안쪽 그림자 + 광택 -->
-          <rect x="178" y="2" width="38" height="272" fill="rgba(122,93,49,.12)"/>
-          <rect x="0" y="0" width="216" height="276" rx="7" fill="url(#bagSheen)"/>
-          <path d="M30 6 L84 6 L34 270 L8 270 Z" fill="rgba(255,255,255,.13)"/>
-
-          <!-- 특등급 배지 -->
-          <circle cx="40" cy="44" r="17" fill="#1E1A14"/>
-          <circle cx="40" cy="44" r="17" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
-          <text x="40" y="50" text-anchor="middle" font-size="15" font-weight="800" fill="#E8C05A">특</text>
-          <path d="M26 60l-7 8M54 60l7 8" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- 브랜드: 미곡상사 + 米 인장 -->
-          <text x="22" y="100" font-size="20" font-weight="800" fill="#2B2117" letter-spacing="1">미곡</text>
-          <text x="22" y="123" font-size="20" font-weight="800" fill="#2B2117" letter-spacing="1">상사</text>
-          <rect x="64" y="88" width="23" height="23" rx="3" fill="#B3382C"/>
-          <text x="75.5" y="105" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">米</text>
-
-          <!-- 중량 -->
-          <text x="22" y="166" font-size="22" font-weight="800" fill="#2B2117">10kg</text>
-
-          <!-- 중앙 품종 패널 -->
-          <rect x="100" y="26" width="84" height="224" rx="8" fill="#FFFEFA" stroke="#1E1A14" stroke-width="5.5"/>
-          <rect x="108" y="34" width="68" height="208" rx="5" fill="none" stroke="#C9A24B" stroke-width="1.7"/>
-          <g font-family="'Black Han Sans',sans-serif" fill="#1E1A14" text-anchor="middle">
-            <text x="142" y="100" font-size="46">신</text>
-            <text x="142" y="162" font-size="46">동</text>
-            <text x="142" y="224" font-size="46">진</text>
-          </g>
-
-          <!-- 하단 표기·바코드 -->
-          <text x="22" y="226" font-size="9" fill="#6E5F4B">품종 신동진 · 도정일자 별도 표기</text>
-          <text x="22" y="238" font-size="9" fill="#6E5F4B">유통 (주)미곡상사</text>
-          <g fill="#2B2117">
-            <rect x="22" y="244" width="2.6" height="16"/><rect x="27" y="244" width="1.3" height="16"/>
-            <rect x="31" y="244" width="3.2" height="16"/><rect x="37" y="244" width="1.5" height="16"/>
-            <rect x="41" y="244" width="2.3" height="16"/><rect x="46" y="244" width="1.3" height="16"/>
-            <rect x="50" y="244" width="3" height="16"/><rect x="56" y="244" width="1.5" height="16"/>
-          </g>
-        </g>
-      </svg>
+      <img src="shindongjin-rice-cutout-clean.png" alt="" decoding="async">
     </div>
     <div class="trace-copy" id="traceCopy">
+      <em class="t-chip">이력 관리</em>
       <strong>도정일자 · 품종 · 공급처를 기록합니다</strong>
       <span>어느 산지에서, 언제 도정해, 어떤 차로 왔는지 —<br>모든 포대의 이력이 거래명세와 함께 전달됩니다.</span>
     </div>
@@ -776,9 +996,38 @@ footer p{line-height:1.8}
   </div>
 </section>
 
+<!-- ⑩-1 FAQ -->
+<section class="faq" id="faq">
+  <div class="container center">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="sec-title">자주 묻는 질문</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>정말 다음 날 도착하나요?<span class="faq-x"></span></summary>
+        <p>당일 17:00까지 주문·결제 확인분은 다음 날 아침 차량 출고를 원칙으로 합니다. 지역과 물량에 따라 하차 시간은 사전에 협의드립니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>최소 주문 수량이 있나요?<span class="faq-x"></span></summary>
+        <p>20kg 포대 기준 차량 단위 대량 납품이 기본입니다. 5kg·10kg 소분과 정기배송은 준비 중이며, 수량이 애매하시면 일단 문의 주세요 — 가능한 구성을 안내드립니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>결제는 어떻게 진행되나요?<span class="faq-x"></span></summary>
+        <p>신규 거래는 결제 확인 후 출고가 원칙입니다. 견적 단계에서 단가·운송비·부가세를 명확히 안내드리고, 모든 거래에 세금계산서를 발행합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>도정일자는 어떻게 확인하나요?<span class="faq-x"></span></summary>
+        <p>모든 포대에 도정일자·품종·공급처 이력이 기록되며, 거래명세와 함께 전달됩니다. 품질 이슈는 기록을 기준으로 교환·대응합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>샘플을 받아볼 수 있나요?<span class="faq-x"></span></summary>
+        <p>식당·마트 등 반복 납품 상담 시 샘플과 도정일자 기준을 안내드립니다. 문의 폼에 용도와 주간 사용량을 적어주시면 더 정확합니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ⑪ CONTACT -->
-<section class="contact reveal" id="contact">
-  <img class="contact-bg" src="assets/sunset-rice-field.png" alt="" loading="lazy" aria-hidden="true">
+<section class="contact" id="contact">
   <div class="container">
     <span class="eyebrow">CONTACT</span>
     <h2 class="sec-title">품종·수량·지역을 남겨주세요.<br>빠르게 견적을 안내드립니다.</h2>
@@ -786,11 +1035,11 @@ footer p{line-height:1.8}
       <div class="contact-info">
         <p>20kg 대량 납품 기준으로 당일 단가와 출고 가능 물량을 안내드립니다. 전화·카카오톡 상담도 가능합니다.</p>
         <div class="contact-line"><span>전화</span>000-0000-0000</div>
-        <div class="contact-line"><span>카카오톡</span>@미곡상사 (채널 준비 중)</div>
+        <div class="contact-line"><span>카카오톡</span>@ricetree (채널 준비 중)</div>
         <div class="contact-line"><span>이메일</span>hello@example.com</div>
         <div class="contact-line"><span>상담시간</span>평일 08:00 – 18:00</div>
       </div>
-      <form class="cform" onsubmit="event.preventDefault();alert('입력 내용을 확인했습니다. 상담 가능 시간에 맞춰 연락처를 다시 확인해 주세요.');">
+      <form class="cform" onsubmit="event.preventDefault();alert('문의가 접수 양식에 저장되었습니다. (데모 — 실제 전송 연동 예정)');">
         <div class="row">
           <div><label for="f-name">업체명 / 성함</label><input id="f-name" required placeholder="예) ○○식당"></div>
           <div><label for="f-tel">연락처</label><input id="f-tel" required placeholder="010-0000-0000"></div>
@@ -813,15 +1062,17 @@ footer p{line-height:1.8}
 </section>
 
 <footer>
+  <svg class="footer-tree" aria-hidden="true"><use href="#rtLogo"/></svg>
   <div class="container">
     <div class="f-top">
-      <a class="logo" href="#top">미<b>곡</b>상사</a>
+      <a class="logo" href="#top"><svg class="logo-mark" aria-hidden="true"><use href="#rtLogo"/></svg><span class="logo-word">Rice<b>Tree</b></span></a>
       <p>대표 전화 000-0000-0000 · hello@example.com</p>
     </div>
-    <p>상호 (주)미곡상사(가칭) · 대표 OOO · 사업자등록번호 000-00-00000<br>주소: 추후 표기 · 통신판매업 신고: 준비 중<br>© 2026 Migok Sangsa. All rights reserved.</p>
+    <p>상호 (주)라이스트리 Rice Tree(가칭) · 대표 OOO · 사업자등록번호 000-00-00000<br>주소: 추후 표기 · 통신판매업 신고: 준비 중<br>© 2026 Rice Tree. All rights reserved.</p>
   </div>
 </footer>
 
+<button class="to-top" id="toTop" aria-label="맨 위로">↑</button>
 <div class="m-cta"><a href="#contact">대량 납품 견적 문의</a></div>
 
 <script>
@@ -888,14 +1139,16 @@ footer p{line-height:1.8}
     ctx.restore();
   }
 
-  let t=0;
+  let t=0, wind=0, windTarget=0;
+  addEventListener('mousemove', e=>{ windTarget = (e.clientX/innerWidth - 0.5) * 2.2; }, {passive:true});
   function frame(){
     ctx.clearRect(0,0,W,H);
     t+=0.016;
+    wind += (windTarget - wind)*0.04;
     for(let i=0;i<grains.length;i++){
       const g=grains[i];
       g.y += g.vy;
-      g.x += Math.sin(t*g.sway + g.phase)*0.45;
+      g.x += Math.sin(t*g.sway + g.phase)*0.45 + wind*(0.25 + g.depth*0.8);
       g.rot += g.spin;
       if(g.y > H+24) grains[i]=spawn(false);
       drawGrain(g);
@@ -935,8 +1188,7 @@ footer p{line-height:1.8}
     else               op = 0.45;
 
     giant.style.transform = `translate(${x}px, -50%)`;
-    giant.style.setProperty('--trace-alpha', op.toFixed(3));
-    giant.style.setProperty('--trace-emphasis-alpha', Math.min(0.96, op + 0.38).toFixed(3));
+    giant.style.color = `rgba(255,247,231,${op.toFixed(3)})`;
 
     copy.classList.toggle('on', p > 0.42 && p < 0.96);
     const bag = document.getElementById('traceBag');
@@ -1019,10 +1271,24 @@ footer p{line-height:1.8}
           <span class="r-tag">${r.tag}</span>
           <h3>${r.name}</h3>
           <p>${r.desc}</p>
-          <a class="btn btn-primary" href="${r.link}">이 상품 보러 가기</a><br>
+          <a class="btn btn-primary" href="${r.link}">이 상품 보러 가기</a>
+          <a class="btn btn-ghost quiz-to-form" href="#contact" data-kind="${best}" style="margin-left:8px">이 구성으로 견적 문의</a><br>
           <button class="quiz-restart" type="button">다시 해보기</button>
         </div>`;
       box.querySelector('.quiz-restart').addEventListener('click',()=>{step=0;score={};render();});
+      const toForm = box.querySelector('.quiz-to-form');
+      if(toForm) toForm.addEventListener('click',()=>{
+        const KIND = {sdj20:['신동진','20kg × 수량 협의'], sdj10:['신동진','10kg × 수량 협의'],
+                      sdj5:['신동진','5kg 정기배송 희망'], acm10:['알찬미','5kg·10kg 협의'],
+                      premium:['기타 / 상담 후 결정','선물세트 1kg·3kg'], b2b:['신동진','20kg 정기 납품']};
+        const v = KIND[toForm.dataset.kind] || KIND.sdj10;
+        const kindSel = document.getElementById('f-kind');
+        const amt = document.getElementById('f-amt');
+        if(kindSel && [...kindSel.options].some(o=>o.text===v[0])) kindSel.value = v[0];
+        if(amt) amt.value = v[1];
+        const form = document.querySelector('.cform');
+        if(form){ form.classList.remove('flash'); void form.offsetWidth; form.classList.add('flash'); }
+      });
     }
   }
   render();
@@ -1062,156 +1328,102 @@ footer p{line-height:1.8}
 })();
 
 /* ============================================================
-   5) 이력 섹션 BG — 짧은 한국쌀 알갱이 레이어
+   5) 이력 섹션 배경 — 한국 단립종(통통하고 윤기나는) 쌀알 페인팅
 ============================================================ */
 (function(){
-  const cv = document.getElementById('traceRiceCanvas');
+  const cv = document.getElementById('riceField');
   if(!cv) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = cv.getContext('2d');
-  let W,H,DPR, grains=[], clusters=[], seed=1;
 
-  const COLORS = [
-    {fill:'#F7F0DF', edge:'#CFC4AD', shade:'#B6AA91'},
-    {fill:'#EEE7D6', edge:'#BFB49F', shade:'#9F957F'},
-    {fill:'#FBF6EA', edge:'#D9CEB9', shade:'#C0B49C'},
-    {fill:'#D8D0BF', edge:'#9E9583', shade:'#776E60'}
-  ];
-
-  function reseed(){
-    seed = ((Math.round(W) * 73856093) ^ (Math.round(H) * 19349663)) >>> 0;
-    if(!seed) seed = 1;
-  }
-
-  function rand(){
-    seed = (seed * 1664525 + 1013904223) >>> 0;
-    return seed / 4294967296;
-  }
-
-  function size(){
-    DPR = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth;
-    H = cv.clientHeight;
-    cv.width = Math.max(1, W * DPR);
-    cv.height = Math.max(1, H * DPR);
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    reseed();
-    const clusterCount = Math.round(Math.min(30, Math.max(10, W * H / 62000)));
-    const cols = Math.max(1, Math.ceil(Math.sqrt(clusterCount * (W / Math.max(H, 1)))));
-    const rows = Math.max(1, Math.ceil(clusterCount / cols));
-    clusters = Array.from({length:clusterCount}, (_, idx) => {
-      const col = idx % cols;
-      const row = Math.floor(idx / cols);
-      return {
-        x: ((col + .22 + rand() * .56) / cols) * W,
-        y: ((row + .16 + rand() * .68) / rows) * H,
-        spread: 128 + rand() * 190
-      };
-    });
-    const density = W < 720 ? 1080 : 960;
-    const floor = W < 720 ? 300 : 560;
-    const count = Math.round(Math.min(1780, Math.max(floor, W * H / density)));
-    grains = Array.from({length:count}, ()=>spawn(true));
-    drawStatic();
-  }
-
-  function normal(){
-    let u = 0, v = 0;
-    while(u === 0) u = rand();
-    while(v === 0) v = rand();
-    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
-  }
-
-  function wrap(v, max){
-    return ((v % max) + max) % max;
-  }
-
-  function spawn(anywhere){
-    const depth = rand();
-    const clustered = clusters.length && rand() < .46;
-    const cluster = clustered ? clusters[Math.floor(rand() * clusters.length)] : null;
-    const spread = cluster ? cluster.spread * (.86 + depth * .56) : 0;
-    const x = cluster ? wrap(cluster.x + normal() * spread, W) : rand() * W;
-    const y = anywhere
-      ? (cluster ? wrap(cluster.y + normal() * spread * .68, H) : rand() * H)
-      : (cluster ? -46 - rand() * 90 + normal() * 16 : -40);
-    const L = 14 + depth * 18 + (clustered ? .6 : 0);
-    return {
-      x,
-      y,
-      L,
-      Wd: L * (0.46 + rand()*0.1),
-      depth,
-      vy: 0.18 + depth * 0.66,
-      vx: (rand() - 0.5) * (0.18 + depth * 0.34),
-      sway: 0.35 + rand() * 0.8,
-      phase: rand() * Math.PI * 2,
-      rot: rand() * Math.PI,
-      spin: (rand() - 0.5) * 0.012,
-      blur: depth < .22 ? 2.8 : depth < .46 ? 1.2 : 0,
-      alpha: Math.min(.96, 0.31 + depth * 0.56 + (clustered ? .025 : 0)),
-      c: COLORS[Math.floor(rand()*COLORS.length)]
-    };
-  }
-
-  function drawGrain(g){
+  function grain(x, y, L, rot, bright, blurry){
+    const W = L * 0.62;                       // 단립종: 통통한 비율
     ctx.save();
-    ctx.translate(g.x, g.y);
-    ctx.rotate(g.rot);
-    ctx.globalAlpha = g.alpha;
-    ctx.shadowColor = 'rgba(7,4,2,.48)';
-    ctx.shadowBlur = 3 + g.depth * 7;
-    ctx.shadowOffsetX = 1.5 + g.depth * 2.5;
-    ctx.shadowOffsetY = 2 + g.depth * 4;
-    if(g.blur) ctx.filter = `blur(${g.blur}px)`;
-
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    // 알 아래 접촉 그림자 (쌓인 깊이감)
     ctx.beginPath();
-    ctx.ellipse(0,0,g.Wd/2,g.L/2,0,0,Math.PI*2);
-    ctx.fillStyle = g.c.fill;
+    ctx.ellipse(L*0.06, L*0.08, W/2, L/2, 0, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(40,28,14,${blurry?0.18:0.30})`;
     ctx.fill();
-    ctx.lineWidth = 0.8;
-    ctx.strokeStyle = g.c.edge;
-    ctx.stroke();
-
-    ctx.shadowBlur = 0;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = 0;
+    // 본체: 유백색 그라데이션
+    const g = ctx.createRadialGradient(-W*0.16, -L*0.18, L*0.06, 0, 0, L*0.62);
+    g.addColorStop(0,  `rgba(255,253,246,${bright})`);
+    g.addColorStop(0.55,`rgba(244,237,221,${bright})`);
+    g.addColorStop(1,  `rgba(216,203,176,${bright})`);
     ctx.beginPath();
-    ctx.ellipse(-g.Wd*.12,-g.L*.18,g.Wd*.16,g.L*.22,-.25,0,Math.PI*2);
-    ctx.fillStyle = 'rgba(255,255,255,.58)';
-    ctx.fill();
+    ctx.ellipse(0, 0, W/2, L/2, 0, 0, Math.PI*2);
+    ctx.fillStyle = g; ctx.fill();
+    // 쌀눈 자리 (한쪽 끝의 옅은 눈)
     ctx.beginPath();
-    ctx.ellipse(g.Wd*.18,g.L*.18,g.Wd*.12,g.Wd*.12,0,0,Math.PI*2);
-    ctx.fillStyle = g.c.shade;
-    ctx.globalAlpha = g.alpha * .55;
-    ctx.fill();
+    ctx.ellipse(W*0.10, L*0.34, W*0.13, L*0.09, 0.5, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(196,178,142,.5)'; ctx.fill();
+    // 윤기: 스펙큘러 하이라이트
+    ctx.beginPath();
+    ctx.ellipse(-W*0.16, -L*0.20, W*0.14, L*0.16, -0.3, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.fill();
     ctx.restore();
   }
 
-  function drawStatic(){
-    ctx.clearRect(0,0,W,H);
-    grains.forEach(drawGrain);
+  function paint(){
+    const host = cv.parentElement;
+    const DPR = Math.min(devicePixelRatio||1, 1.5);
+    const W = host.clientWidth, H = host.clientHeight;
+    if(!W || !H) return;
+    cv.width = W*DPR; cv.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+
+    // 깊은 바닥
+    const bg = ctx.createRadialGradient(W/2, H*0.42, H*0.1, W/2, H/2, Math.max(W,H)*0.75);
+    bg.addColorStop(0,'#4A3722'); bg.addColorStop(1,'#241B12');
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+    const n = Math.round(W*H/2400);           // 밀도
+    // 1패스: 깊은 층 (살짝 흐리고 어둡게)
+    ctx.filter = 'blur(2.2px)';
+    for(let i=0;i<n*0.55;i++)
+      grain(Math.random()*W, Math.random()*H, 22+Math.random()*12, Math.random()*Math.PI, 0.62, true);
+    // 2패스: 본 층
+    ctx.filter = 'blur(0.4px)';
+    for(let i=0;i<n;i++)
+      grain(Math.random()*W, Math.random()*H, 28+Math.random()*16, Math.random()*Math.PI, 0.96, false);
+    ctx.filter = 'none';
+    // 3패스: 표면의 또렷한 알 몇 톨
+    for(let i=0;i<n*0.18;i++)
+      grain(Math.random()*W, Math.random()*H, 34+Math.random()*16, Math.random()*Math.PI, 1, false);
   }
 
-  function frame(){
-    ctx.clearRect(0,0,W,H);
-    for(const g of grains){
-      g.y += g.vy;
-      g.x += g.vx + Math.sin((g.y + g.phase * 80) * .01) * g.sway * .08;
-      g.rot += g.spin;
-      if(g.y > H + 48 || g.x < -64 || g.x > W + 64) Object.assign(g, spawn(false));
-      drawGrain(g);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  addEventListener('resize', size, {passive:true});
-  size();
-  if(!reduce) frame();
+  let t;
+  addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(paint, 200); }, {passive:true});
+  if(document.readyState==='complete') paint();
+  else addEventListener('load', paint);
 })();
 
 /* ============================================================
-   6) 카드 선택 상태 — 그리드별 단일 선택, 키보드 접근 지원
+   6) D+1 레이스 — 화면 진입 시 시작, 10초마다 리플레이
+============================================================ */
+(function(){
+  const race = document.getElementById('race');
+  if(!race) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let visible=false, timer=null;
+
+  function play(){
+    race.classList.remove('go');
+    void race.offsetWidth;          // 리플로우로 애니메이션 리셋
+    race.classList.add('go');
+  }
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    visible = e.isIntersecting;
+    if(visible){
+      play();
+      if(!reduce && !timer) timer = setInterval(()=>{ if(visible) play(); }, 10000);
+    }
+  }),{threshold:.35});
+  io.observe(race);
+})();
+
+/* ============================================================
+   7) 카드 선택 상태 — 그리드별 단일 선택, 키보드 접근 지원
 ============================================================ */
 (function(){
   document.querySelectorAll('.prod-grid, .tgt-grid, .sub-grid').forEach(grid=>{
@@ -1239,7 +1451,101 @@ footer p{line-height:1.8}
 })();
 
 /* ============================================================
-   7) Reveal on scroll
+   8) v1.7 — 진행바·헤더·스크롤스파이·카운트다운·카운터·위로가기·FAQ·패럴랙스
+============================================================ */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 스크롤 진행바 + 헤더 상태 + 위로가기 */
+  const bar = document.getElementById('scrollProgress');
+  const hd  = document.querySelector('header');
+  const top = document.getElementById('toTop');
+  function onScroll(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    if(bar && max>0) bar.style.width = (scrollY/max*100).toFixed(2)+'%';
+    if(hd) hd.classList.toggle('scrolled', scrollY > 24);
+    if(top) top.classList.toggle('show', scrollY > 700);
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  if(top) top.addEventListener('click', ()=>scrollTo({top:0, behavior: reduce?'auto':'smooth'}));
+
+  /* 스크롤스파이 — 현재 섹션 메뉴 강조 */
+  const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const targets = links.map(a=>document.querySelector(a.hash)).filter(Boolean);
+  if(targets.length){
+    const spy = new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(!e.isIntersecting) return;
+        links.forEach(a=>a.classList.toggle('active', a.hash === '#'+e.target.id));
+      });
+    },{rootMargin:'-38% 0px -55% 0px'});
+    targets.forEach(t=>spy.observe(t));
+  }
+
+  /* 주문 마감 카운트다운 (매일 17:00) */
+  const dl = document.getElementById('heroDeadline');
+  const tm = document.getElementById('hdTime');
+  if(dl && tm){
+    const label = dl.querySelector('.hd-label');
+    function tick(){
+      const now = new Date();
+      const cut = new Date(now); cut.setHours(17,0,0,0);
+      if(now < cut){
+        dl.classList.remove('closed');
+        label.textContent = '오늘 주문 마감까지';
+        const s = Math.floor((cut - now)/1000);
+        tm.textContent = String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s%3600/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+      } else {
+        dl.classList.add('closed');
+        label.textContent = '오늘 접수 마감 — 내일 마감까지';
+        cut.setDate(cut.getDate()+1);
+        const s = Math.floor((cut - now)/1000);
+        tm.textContent = String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s%3600/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+      }
+    }
+    tick(); setInterval(tick, 1000);
+  }
+
+  /* 약속 수치 카운트업 */
+  const stats = document.getElementById('stats');
+  if(stats){
+    const so = new IntersectionObserver(es=>es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      so.unobserve(stats);
+      stats.querySelectorAll('.count').forEach(el=>{
+        const to = +el.dataset.to, from = +(el.dataset.from||0), dur = 1200, t0 = performance.now();
+        if(reduce){ el.textContent = to; return; }
+        (function step(t){
+          const p = Math.min(1,(t-t0)/dur), e2 = 1-Math.pow(1-p,3);
+          el.textContent = Math.round(from + (to-from)*e2);
+          if(p<1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }),{threshold:.5});
+    so.observe(stats);
+  }
+
+  /* 히어로 포대 마우스 패럴랙스 */
+  const vis = document.getElementById('heroVisual');
+  const hero = document.querySelector('.hero');
+  if(vis && hero && !reduce){
+    hero.addEventListener('mousemove', e=>{
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+      vis.querySelector('img').style.transform = `translate(${x*14}px, ${y*10}px) rotate(${x*1.6}deg)`;
+    });
+    hero.addEventListener('mouseleave', ()=>{ vis.querySelector('img').style.transform=''; });
+  }
+
+  /* FAQ — 한 번에 하나만 열기 */
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(d=>d.addEventListener('toggle', ()=>{
+    if(d.open) items.forEach(o=>{ if(o!==d) o.open=false; });
+  }));
+})();
+
+/* ============================================================
+   9) Reveal on scroll
 ============================================================ */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
