@@ -331,10 +331,16 @@ header.scrolled{box-shadow:0 6px 24px rgba(94,72,35,.12);background:rgba(251,246
 
 /* 히어로 2열 + 포대 비주얼 */
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
-.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;
-  filter:drop-shadow(0 30px 40px rgba(94,72,35,.30))}
-.hero-visual img{width:min(380px,30vw);height:auto;animation:bag-float 5s ease-in-out infinite alternate;
-  transition:transform .3s ease;will-change:transform}
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;isolation:isolate;
+  filter:drop-shadow(0 28px 38px rgba(94,72,35,.26))}
+.hero-visual::before{content:"";position:absolute;inset:3% 4% -2%;z-index:-2;border-radius:50%;
+  background:radial-gradient(circle at 54% 43%,rgba(255,232,176,.52),rgba(217,164,65,.20) 48%,rgba(217,164,65,0) 72%);
+  filter:blur(14px)}
+.hero-visual::after{content:"";position:absolute;left:18%;right:12%;bottom:1%;height:11%;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(83,61,33,.42) 0%,rgba(83,61,33,.18) 48%,rgba(83,61,33,0) 76%);
+  filter:blur(10px);transform:rotate(-3deg)}
+.hero-visual img{position:relative;z-index:1;width:min(380px,30vw);height:auto;animation:bag-float 5s ease-in-out infinite alternate;
+  transition:transform .3s ease;will-change:transform;filter:drop-shadow(0 18px 24px rgba(64,47,25,.16))}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}}
 
 /* 주문 마감 카운트다운 */
@@ -441,12 +447,16 @@ footer{position:relative;overflow:hidden}
 .trust-item .gicon{margin-bottom:2px}
 
 /* ==================== TRACE RICE BAG ==================== */
-.trace-bag{position:absolute;left:50%;bottom:1%;width:min(92vw,clamp(450px,54vw,720px));z-index:3;
+.trace-bag{position:absolute;left:50%;bottom:1%;width:min(92vw,clamp(450px,54vw,720px));z-index:3;isolation:isolate;
   opacity:0;transform:translate(-50%,40px);transition:opacity .7s ease,transform .7s ease;
-  filter:drop-shadow(0 26px 38px rgba(0,0,0,.45));pointer-events:none}
+  filter:drop-shadow(0 30px 42px rgba(0,0,0,.44)) drop-shadow(0 12px 16px rgba(42,29,17,.28));
+  pointer-events:none;will-change:transform,opacity}
+.trace-bag::after{content:"";position:absolute;left:12%;right:9%;bottom:-1%;height:12%;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.46) 0%,rgba(0,0,0,.20) 48%,rgba(0,0,0,0) 76%);
+  filter:blur(10px);transform:rotate(-2deg)}
 .trace-bag.on{opacity:1;transform:translate(-50%,0)}
-.trace-bag img{width:100%;height:auto;animation:bag-float 4.6s ease-in-out infinite alternate}
-@keyframes bag-float{from{transform:translateY(0) rotate(-.3deg)}to{transform:translateY(-9px) rotate(.4deg)}}
+.trace-bag img{position:relative;z-index:1;width:100%;height:auto;animation:bag-float 4.6s ease-in-out infinite alternate}
+@keyframes bag-float{from{transform:translateY(0) rotate(-.3deg)}to{transform:translateY(-10px) rotate(.4deg)}}
 @media(max-width:720px){.trace-bag{width:min(92vw,495px);bottom:4%}}
 @media(prefers-reduced-motion:reduce){.trace-bag{opacity:1;transform:translate(-50%,0)}.trace-bag img{animation:none}}
 
@@ -724,7 +734,7 @@ footer{position:relative;overflow:hidden}
       </div>
     </div>
     <div class="hero-visual" id="heroVisual" aria-hidden="true">
-      <img src="shindongjin-rice-cutout-clean.png" alt="" decoding="async">
+      <img src="rice-tree-shindongjin-bag.png" alt="" decoding="async">
     </div>
   </div>
 </section>
@@ -971,7 +981,7 @@ footer{position:relative;overflow:hidden}
     </div>
     <h2 class="trace-giant" id="traceGiant">한 포대마다 이력이 따라옵니다</h2>
     <div class="trace-bag" id="traceBag" aria-hidden="true">
-      <img src="shindongjin-rice-cutout-clean.png" alt="" decoding="async">
+      <img src="rice-tree-shindongjin-bag.png" alt="" decoding="async">
     </div>
     <div class="trace-copy" id="traceCopy">
       <em class="t-chip">이력 관리</em>
