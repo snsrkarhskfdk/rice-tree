@@ -179,6 +179,7 @@ footer .logo-word b{color:var(--rice-gold)}
   color:rgba(255,247,231,.45);
   text-shadow:0 3px 34px rgba(36,27,18,.62), 0 1px 4px rgba(36,27,18,.4);
   will-change:transform,opacity;z-index:4}
+.trace-giant .trace-highlight{color:rgba(75,75,75,var(--trace-highlight-alpha,.45))}
 .trace-copy{position:absolute;left:50%;top:10%;transform:translateX(-50%);text-align:center;z-index:5;
   opacity:0;transition:opacity .5s ease;width:min(620px,88vw);
   background:rgba(251,246,236,.95);border:1px solid rgba(201,162,75,.55);border-radius:16px;
@@ -979,7 +980,7 @@ footer{position:relative;overflow:hidden}
     <div class="trace-media">
       <canvas id="riceField" aria-label="한국 단립종 쌀알 클로즈업"></canvas>
     </div>
-    <h2 class="trace-giant" id="traceGiant">한 포대마다 이력이 따라옵니다</h2>
+    <h2 class="trace-giant" id="traceGiant">한 포대마다 <span class="trace-highlight">이력이</span> 따라옵니다</h2>
     <div class="trace-bag" id="traceBag" aria-hidden="true">
       <img src="rice-tree-shindongjin-bag.png" alt="" decoding="async">
     </div>
@@ -1199,6 +1200,7 @@ footer{position:relative;overflow:hidden}
 
     giant.style.transform = `translate(${x}px, -50%)`;
     giant.style.color = `rgba(255,247,231,${op.toFixed(3)})`;
+    giant.style.setProperty('--trace-highlight-alpha', op.toFixed(3));
 
     copy.classList.toggle('on', p > 0.42 && p < 0.96);
     const bag = document.getElementById('traceBag');
